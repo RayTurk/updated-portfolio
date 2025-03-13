@@ -1,6 +1,8 @@
 import React from "react";
 import { Github, ExternalLink } from "lucide-react";
-import olova from "../assets/images/olova.png";
+import petitti from "../assets/images/petitti.png";
+import geauga from "../assets/images/geauga.png";
+import radair from "../assets/images/radair.png";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 const MacOsButtons = () => (
@@ -14,17 +16,41 @@ const MacOsButtons = () => (
 const ProjectShowcase = () => {
   const projects = [
     {
-      title: "Olova! A Lightweight JavaScript Library",
+      title: "Petitti Garden Center",
       description:
-        "Olova.js is a lightweight JavaScript library for building modern, reactive, and dynamic web applications. It features a simple, component-based architecture, enabling developers to create reusable and interactive UI elements with minimal code and overhead.",
-      tags: ["JavaScript", "Reactive", "Web Development"],
+        "E-commerce solution with inventory management system, seasonal product highlights, and integrated store locator.",
+      tags: ["WordPress", "WooCommerce", "Custom Plugins", "API Integration"],
       links: {
-        github: "https://github.com/olovajs/olova",
-        demo: "https://olova.js.org/",
+        github: "",
+        demo: "https://www.petittigardencenter.com/",
       },
-      image: olova,
+      image: petitti,
       featured: true,
     },
+    {
+      title: "Geauga County's Government Multisite",
+      description:
+        "Multisite platform unifying 25+ department websites with centralized content management and custom functionality.",
+      tags: ["WordPress Multisite", "Custom Theme", "User Permissions", "Event Calendar"],
+      links: {
+        github: "",
+        demo: "https://geauga.oh.gov/",
+      },
+      image: geauga,
+      featured: false,
+    },
+    {
+      title: "RadAir Car Care",
+      description:
+        "Modern automotive service platform featuring online appointment booking and service history tracking.",
+      tags: ["WordPress", "Appointment Booking", "Custom Development"],
+      links: {
+        github: "",
+        demo: "https://radair.com",
+      },
+      image: radair,
+      featured: false,
+    }
   ];
 
   return (
@@ -62,14 +88,14 @@ const ProjectShowcase = () => {
                     </CardTitle>
                   </div>
                   <div className="flex gap-4">
-                    <a
+                    {/* <a
                       href={project.links.github}
                       className="text-slate-400 hover:text-emerald-400 transition-all duration-300 transform hover:scale-125"
                       target="_blank"
                       rel="noopener noreferrer"
                     >
                       <Github size={22} />
-                    </a>
+                    </a> */}
                     <a
                       href={project.links.demo}
                       className="text-slate-400 hover:text-emerald-400 transition-all duration-300 transform hover:scale-125"

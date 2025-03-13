@@ -35,12 +35,6 @@ export default function Header() {
       text: "Experience",
       path: "/experience",
     },
-    {
-      id: "education",
-      icon: FaGraduationCap,
-      text: "Education",
-      path: "/education",
-    },
     { id: "projects", icon: FaLaptopCode, text: "Projects", path: "/projects" },
     { id: "contact", icon: FaEnvelope, text: "Contact", path: "/contact" },
   ];
@@ -53,7 +47,7 @@ export default function Header() {
             {/* Mobile Menu Button */}
             <div className="flex justify-between items-center md:hidden px-2">
               <Link to="/" className="text-white font-bold">Portfolio</Link>
-              <button 
+              <button
                 onClick={() => setIsMenuOpen(!isMenuOpen)}
                 className="text-white p-2"
               >
@@ -74,18 +68,16 @@ export default function Header() {
                     }}
                     className={`px-3 py-2 md:py-1.5 rounded-lg md:rounded-full text-sm font-medium
                       transition-all duration-300 flex items-center gap-2
-                      hover:bg-white/10 
-                      ${
-                        activeLink === id
-                          ? "bg-white/15 text-white"
-                          : "text-gray-300 hover:text-white"
+                      hover:bg-white/10
+                      ${activeLink === id
+                        ? "bg-white/15 text-white"
+                        : "text-gray-300 hover:text-white"
                       }
                     `}
                   >
                     <Icon
-                      className={`text-base ${
-                        activeLink === id ? "scale-110" : ""
-                      }`}
+                      className={`text-base ${activeLink === id ? "scale-110" : ""
+                        }`}
                     />
                     <span className="inline">{text}</span>
                   </Link>
