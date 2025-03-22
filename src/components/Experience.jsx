@@ -52,14 +52,15 @@ const ExperienceCard = ({
 );
 
 const ExperienceSection = () => {
+  // Reordered experiences - newest first
   const experiences = [
     {
-      icon: Network,
-      title: "Junior Developer",
-      company: "Freelance",
-      period: "2019 - 2020",
+      icon: Code2,
+      title: "Full Stack WordPress Developer",
+      company: "FSM",
+      period: "2024 - 2025",
       description:
-        "Built basic, static sites for smaller businesses local to my area, usually donated.",
+        "Contributed to developing highly customized WordPress websites using custom functionality and plugins.",
     },
     {
       icon: Layers,
@@ -70,12 +71,12 @@ const ExperienceSection = () => {
         "Worked on developing and customizing WordPress websites for clients locally and globally.",
     },
     {
-      icon: Code2,
-      title: "Full Stack WordPress Developer",
-      company: "FSM",
-      period: "2024 - 2025",
+      icon: Network,
+      title: "Junior Developer",
+      company: "Freelance",
+      period: "2019 - 2020",
       description:
-        "Contributed to developing highly customized WordPress websites using custom functionality and plugins.",
+        "Built basic, static sites for smaller businesses local to my area, usually donated.",
     },
   ];
 
@@ -117,7 +118,7 @@ const ExperienceSection = () => {
             </p>
           </div>
 
-          {/* Experience grid with improved layout */}
+          {/* Experience grid with improved layout - reversed order for mobile */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 max-w-7xl mx-auto">
             {experiences.map((exp, index) => (
               <ExperienceCard key={index} {...exp} />

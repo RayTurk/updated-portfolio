@@ -16,14 +16,17 @@ import { Link, useLocation } from "react-router-dom";
 
 export default function Header() {
   const location = useLocation();
-  const [activeLink, setActiveLink] = useState(() => {
-    const path = location.pathname.substring(1) || "home";
-    return path;
-  });
+  const [activeLink, setActiveLink] = useState("");
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isMenuClosing, setIsMenuClosing] = useState(false);
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const closeTimeoutRef = useRef(null);
+
+  // Update active link when location changes
+  useEffect(() => {
+    const path = location.pathname.substring(1) || "home";
+    setActiveLink(path);
+  }, [location]);
 
   useEffect(() => {
     const handleResize = () => setWindowWidth(window.innerWidth);
@@ -65,11 +68,14 @@ export default function Header() {
 
   const handleLinkClick = (id) => {
     setActiveLink(id);
-    handleMenuClose();
+    if (isMenuOpen) {
+      handleMenuClose();
+    }
   };
 
   const navLinks = [
     { id: "home", icon: FaHome, text: "Home", path: "/" },
+    { id: "about", icon: FaUser, text: "About", path: "/about" },
     { id: "skills", icon: FaCode, text: "Skills", path: "/skills" },
     {
       id: "experience",
@@ -85,7 +91,7 @@ export default function Header() {
     <header className="fixed top-0 left-0 w-full z-50 bg-gray-800/95 backdrop-blur-md md:bg-transparent md:backdrop-blur-none">
       <div className="md:fixed md:top-4 md:left-1/2 md:transform md:-translate-x-1/2 w-full md:w-auto">
         <div className="bg-gradient-to-r from-emerald-400 via-cyan-500 to-indigo-500 md:p-[2px] md:rounded-full animate-gradient-x">
-          <nav className="bg-gray-800/90 backdrop-blur-md md:rounded-full px-4 md:px-6 py-2.5">
+          <nav className="bg-gray-800/90 backdrop-blur-md md:rounded-full px-4 md:px-6 py-2.5 text-sharp">
             {/* Mobile Menu Button */}
             <div className="flex justify-between items-center md:hidden px-2">
               <Link to="/" className="text-white font-bold">Portfolio</Link>
@@ -105,7 +111,7 @@ export default function Header() {
             {/* Navigation Links - Desktop view always visible, mobile animated */}
             <div
               className={`
-                ${isMenuOpen && !isMenuClosing ? 'flex mobile-menu-open' : ''}
+                ${isMenuOpen ? 'flex mobile-menu-open' : ''}
                 ${isMenuClosing ? 'flex mobile-menu-closing' : ''}
                 ${!isMenuOpen && !isMenuClosing ? 'hidden' : ''}
                 md:flex
@@ -119,12 +125,12 @@ export default function Header() {
                     onClick={() => handleLinkClick(id)}
                     className={`px-3 py-3 md:py-1.5 rounded-lg md:rounded-full text-sm font-medium
                       transition-all duration-300 flex items-center gap-3
-                      hover:bg-gray-700/70
+                      hover:bg-gray-700/70 relative
                       ${activeLink === id
                         ? "bg-gray-700/80 text-white"
                         : "text-gray-300 hover:text-white"
                       }
-                      mobile-menu-item
+                      mobile-menu-item text-sharp
                     `}
                     style={{
                       animationDelay: isMenuClosing ? `${(navLinks.length - 1 - index) * 0.05}s` : `${index * 0.1}s`

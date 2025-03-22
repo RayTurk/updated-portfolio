@@ -18,8 +18,8 @@ const ProjectShowcase = () => {
     {
       title: "Petitti Garden Center",
       description:
-        "E-commerce solution with inventory management system, seasonal product highlights, and integrated store locator.",
-      tags: ["WordPress", "WooCommerce", "Custom Plugins", "API Integration"],
+        "Full site redesign including an online gateway for digital giftcards, seasonal product highlights, and integrated store locator.",
+      tags: ["WordPress", "Digital Giftcards", "Custom Plugins", "API Integration"],
       links: {
         github: "",
         demo: "https://www.petittigardencenter.com/",

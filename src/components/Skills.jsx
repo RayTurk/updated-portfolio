@@ -140,7 +140,7 @@ const SkillsSection = () => {
       color: "text-purple-400",
       skills: [
         { name: "Figma", icon: <FaFigma className="w-4 h-4 text-[#F24E1E]" /> },
-        { name: "AdobeXD", icon: <SiAdobexd className="w-4 h-4 text-[#ff40c9]" /> },
+        { name: "AdobeXD", icon: <SiAdobexd className="w-4 h-4 text-[#F24E1E]" /> },
         {
           name: "Responsive Design",
           icon: <Layout className="w-4 h-4 text-[#38B2AC]" />,
