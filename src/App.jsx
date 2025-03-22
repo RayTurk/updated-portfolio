@@ -13,7 +13,7 @@ export default function App() {
   const [isOnePage, setIsOnePage] = useState(false); // Toggle state
 
   return (
-    <>
+    <div className="max-w-[100vw] overflow-x-hidden">
       <Header />
       {/* Conditional Rendering */}
       {isOnePage ? (
@@ -36,6 +36,6 @@ export default function App() {
           <Route path="/projects" element={<Projects />} />
         </Routes>
       )}
-    </>
+    </div>
   );
 }

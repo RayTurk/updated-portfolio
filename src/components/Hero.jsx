@@ -47,19 +47,19 @@ const AnimatedGrid = () => {
 
 export default function Hero() {
   const words = [
-    "Full-Stack WordPress Developer",
+    "Full-Stack Developer",
     "UI/UX Enthusiast",
-    "Custom Themes & Plugins Creator",
+    "WordPress & Shopify",
   ];
 
   const [code] = useState(`
 const profile = {
     name: 'Raymond Turk',
-    title: 'Full-Stack WordPress Developer | AI Enthusiast | Problem Solver',
+    title: 'Full-Stack Developer | WordPress & Shopify | Problem Solver',
     skills: [
-        'React', 'Redux', 'Express',
-        'MySQL', 'AWS', 'TypeScript',
-        'Git', 'Linux', 'WordPress Development'
+        'WordPress', 'Shopify', 'PHP', 'React',
+        'MySQL', 'JavaScript', 'TypeScript',
+        'Git', 'Linux', 'Tailwind'
     ],
     hardWorker: true,
     quickLearner: true,
@@ -94,7 +94,7 @@ const profile = {
           </div> */}
 
           {/* Main content container */}
-          <div className="container mx-auto flex flex-col lg:flex-row items-center justify-between relative z-10 py-12 lg:py-0">
+          <div className="container mx-auto flex flex-col lg:flex-row items-center justify-between relative z-10 py-16 lg:py-0 gap-4">
             {/* Left column - Text content */}
             <div className="w-full lg:w-1/2 mb-12 lg:mb-0 animate__animated animate__fadeInLeft relative">
               {/* Decorative blurs */}
@@ -112,12 +112,12 @@ const profile = {
               {/* Name section */}
               <div className="relative mb-6 sm:mb-8">
                 <h1 className="text-4xl sm:text-5xl lg:text-7xl font-bold leading-tight">
-                  <SparklesText text="Hello" />
+                  <SparklesText text="Hi there!" />
                   <span className="relative inline-block">
                     I'm
                     <span className="typing-effect gradient-text">
                       {" "}
-                      Raymond Turk
+                      Ray Turk
                     </span>
                   </span>
                 </h1>
@@ -157,15 +157,16 @@ const profile = {
                   </span>
                 </a>
 
-                {/* Contact Button */}
+                {/* Get Resume Button */}
                 <a
-                  href="#"
+                  href="/assets/Ray_Turk_-_Full_Stack_Developer.pdf"
+                  download="Ray_Turk_-_Full_Stack_Developer.pdf"
                   className="group relative inline-flex items-center justify-center gap-3 p-0.5 rounded-xl bg-gradient-to-r from-gray-800 to-gray-700 transition-all duration-300 hover:scale-105 hover:shadow-[0_0_2rem_-0.5rem_#60A5FA]"
                 >
                   <span className="block w-full px-6 sm:px-8 py-3 sm:py-4 rounded-[11px] bg-gray-900 border border-gray-700/50 transition-all duration-300 group-hover:bg-gradient-to-r group-hover:from-gray-800 group-hover:to-gray-700">
                     <span className="relative flex items-center justify-center gap-2 text-gray-300 font-medium group-hover:text-white">
                       <span>Get Resume</span>
-                      <i className="fas fa-envelope transform transition-all duration-300 group-hover:rotate-12"></i>
+                      <i className="fas fa-file-download transform transition-all duration-300 group-hover:rotate-12"></i>
                     </span>
                   </span>
                 </a>
@@ -185,7 +186,7 @@ const profile = {
               </div>
               <div className="hidden lg:block absolute top-[17rem] left-[70%] transform -translate-x-1/2 animate-float">
                 <div className="px-4 py-2 rounded-lg bg-amber-500/10 backdrop-blur-sm border border-amber-500/20 text-amber-400">
-                  <i className="fas fa-lightbulb"></i>&nbsp;&nbsp;Innovative Experiences
+                  <i className="fas fa-lightbulb"></i>&nbsp;&nbsp;Innovative
                 </div>
               </div>
             </div>

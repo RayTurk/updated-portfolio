@@ -27,6 +27,10 @@ import {
   SiFirebase,
   SiVercel,
   SiVite,
+  SiSass,
+  SiShopify,
+  SiPhp,
+  SiAdobexd
 } from "react-icons/si";
 import { TbBrandVscode } from "react-icons/tb";
 import { BsFileEarmarkCode, BsGrid1X2 } from "react-icons/bs";
@@ -76,10 +80,14 @@ const SkillsSection = () => {
           name: "WordPress",
           icon: <FaWordpress className="w-4 h-4 text-[#1572b6]" />
         },
+        {
+          name: "Shopify",
+          icon: <SiShopify className="w-4 h-4 text-[#96bf48]" />
+        },
         { name: "React", icon: <FaReact className="w-4 h-4 text-[#61DAFB]" /> },
         {
-          name: "Next.js",
-          icon: <SiNextdotjs className="w-4 h-4 text-white" />,
+          name: "SaSS",
+          icon: <SiSass className="w-4 h-4 text-white" />,
         },
         {
           name: "TypeScript",
@@ -105,6 +113,10 @@ const SkillsSection = () => {
       color: "text-green-400",
       skills: [
         {
+          name: "PHP",
+          icon: <SiPhp className="w-4 h-4 text-[#474A8A]" />,
+        },
+        {
           name: "Node.js",
           icon: <FaNodeJs className="w-4 h-4 text-[#339933]" />,
         },
@@ -128,6 +140,7 @@ const SkillsSection = () => {
       color: "text-purple-400",
       skills: [
         { name: "Figma", icon: <FaFigma className="w-4 h-4 text-[#F24E1E]" /> },
+        { name: "AdobeXD", icon: <SiAdobexd className="w-4 h-4 text-[#ff40c9]" /> },
         {
           name: "Responsive Design",
           icon: <Layout className="w-4 h-4 text-[#38B2AC]" />,
@@ -147,8 +160,6 @@ const SkillsSection = () => {
       title: "Cloud & DevOps",
       color: "text-orange-400",
       skills: [
-        { name: "AWS", icon: <FaAws className="w-4 h-4 text-[#FF9900]" /> },
-
         { name: "CI/CD", icon: <FcWorkflow className="w-4 h-4" /> },
 
         { name: "Git", icon: <FaGitAlt className="w-4 h-4 text-[#F05032]" /> },

@@ -72,8 +72,8 @@ const ExperienceSection = () => {
     {
       icon: Code2,
       title: "Full Stack WordPress Developer",
-      company: "Full Spectrum Marketing",
-      period: "2024 - Present",
+      company: "FSM",
+      period: "2024 - 2025",
       description:
         "Contributed to developing highly customized WordPress websites using custom functionality and plugins.",
     },

@@ -13,9 +13,8 @@ const AnimatedGrid = () => {
                 key={`v-${i}`}
                 className="relative h-full w-full border-r border-blue-500/10"
                 style={{
-                  animation: `gridPulse ${
-                    2 + Math.random() * 2
-                  }s ease-in-out infinite`,
+                  animation: `gridPulse ${2 + Math.random() * 2
+                    }s ease-in-out infinite`,
                   animationDelay: `${Math.random() * 2}s`,
                 }}
               />
@@ -29,9 +28,8 @@ const AnimatedGrid = () => {
                 key={`h-${i}`}
                 className="relative w-full h-full border-b border-blue-500/10"
                 style={{
-                  animation: `gridPulse ${
-                    2 + Math.random() * 2
-                  }s ease-in-out infinite`,
+                  animation: `gridPulse ${2 + Math.random() * 2
+                    }s ease-in-out infinite`,
                   animationDelay: `${Math.random() * 2}s`,
                 }}
               />
