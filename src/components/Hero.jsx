@@ -201,7 +201,7 @@ const profile = {
                     <div className="window-dot bg-red-500"></div>
                     <div className="window-dot bg-yellow-500"></div>
                     <div className="window-dot bg-green-500"></div>
-                    <span className="ml-2 text-sm text-gray-400 flex items-center gap-2">
+                    <span className="ml-2 text-sm text-gray-300 flex items-center gap-2">
                       <i className="fas fa-code"></i>
                       developer.js
                     </span>
@@ -217,7 +217,7 @@ const profile = {
 
         {/* Scroll indicator */}
         <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce flex flex-col items-center gap-2">
-          <span className="text-gray-400 text-sm flex items-center gap-2">
+          <span className="text-gray-300 text-sm flex items-center gap-2">
             <i className="fas fa-mouse text-blue-400"></i>
             Scroll to explore
           </span>

@@ -174,7 +174,7 @@ export default function EnhancedPortfolioCard() {
                   <h3 className="font-semibold text-xl text-gray-100">
                     UI Designer
                   </h3>
-                  <p className="text-lg text-gray-400">Specialized Bicycle</p>
+                  <p className="text-lg text-gray-300">Specialized Bicycle</p>
                 </div>
               </motion.div>
               <motion.div className="flex items-center gap-4" whileHover={{ x: 10 }}>
@@ -188,7 +188,7 @@ export default function EnhancedPortfolioCard() {
                   <h3 className="font-semibold text-xl text-gray-100">
                     Interaction Designer
                   </h3>
-                  <p className="text-lg text-gray-400">
+                  <p className="text-lg text-gray-300">
                     Critical Mass / On-Site Apple
                   </p>
                 </div>
@@ -229,7 +229,7 @@ export default function EnhancedPortfolioCard() {
                           transition={{ type: "spring", stiffness: 300 }}>
                           {app.icon}
                         </motion.div>
-                        <span className="text-sm text-gray-400">
+                        <span className="text-sm text-gray-300">
                           {app.name}
                         </span>
                       </motion.div>

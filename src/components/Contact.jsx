@@ -1,7 +1,12 @@
 import React, { useState } from "react";
 import { Send, Phone, MapPin, Mail } from "lucide-react";
+import { WEB3FORMS_API_KEY } from '../config.js';
+import useDocumentTitle from '../hooks/useDocumentTitle';
+
 
 export default function Contact() {
+  useDocumentTitle('Contact');
+
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -53,11 +58,14 @@ export default function Contact() {
 
     // Create a new FormData object to send to Web3Forms API
     const form = new FormData();
-    form.append("access_key", "5fc28c07-0516-4258-b97a-a143712d584a"); // Replace with your Web3Forms access key
+    form.append("access_key", WEB3FORMS_API_KEY);
     form.append("name", formData.name);
     form.append("email", formData.email);
     form.append("subject", formData.subject || "New Contact Form Submission");
     form.append("message", formData.message);
+
+    // Add this line - Web3Forms requires a 'from_name' field
+    form.append("from_name", "Portfolio Website");
 
     try {
       // Send form data to Web3Forms API
@@ -67,6 +75,9 @@ export default function Contact() {
       });
 
       const result = await response.json();
+
+      // Log the full response
+      console.log("Web3Forms response:", result);
 
       if (response.ok) {
         setStatus("Message sent successfully!");
@@ -78,14 +89,13 @@ export default function Contact() {
         });
         setErrors({});
       } else {
-        setStatus(result.message || "There was an error sending your message.");
+        setStatus(`Error: ${result.message || "There was an error sending your message."}`);
       }
     } catch (error) {
-      setStatus("An error occurred. Please try again.");
       console.error("Error:", error);
+      setStatus("An error occurred. Please try again.");
     }
   };
-
   return (
     <main
       className="pt-20 lg:pt-[0rem] bg-gradient-to-b from-[#020617] via-[#0a0f1f] to-[#000D1A]/90
@@ -112,7 +122,7 @@ export default function Contact() {
                   </div>
                   <div>
                     <h3 className="font-semibold">Email</h3>
-                    <p className="text-gray-400">rturk.me@gmail.com</p>
+                    <p className="text-gray-300">rturk.me@gmail.com</p>
                   </div>
                 </div>
 
@@ -122,7 +132,7 @@ export default function Contact() {
                   </div>
                   <div>
                     <h3 className="font-semibold">Location</h3>
-                    <p className="text-gray-400">Cleveland, Ohio</p>
+                    <p className="text-gray-300">Cleveland, Ohio</p>
                   </div>
                 </div>
               </div>

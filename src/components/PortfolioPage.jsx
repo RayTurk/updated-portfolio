@@ -1,7 +1,11 @@
 import React from "react";
 import profileImage from "../assets/images/profile.png";
+import useDocumentTitle from '../hooks/useDocumentTitle';
+
 
 const AboutMe = () => {
+  useDocumentTitle('Portfolio');
+
   return (
     <section
       className="about-section bg-gradient-to-b from-[#020617] via-[#0a0f1f] to-[#000D1A]/90 text-white py-16 flex items-center justify-center"
@@ -16,8 +20,9 @@ const AboutMe = () => {
         <div className="image-container">
           <img
             src={profileImage}
-            alt="Profile"
+            alt="Raymond Turk, Full-Stack Web Developer from Cleveland, Ohio"
             className="w-72 h-72 rounded-lg object-cover"
+            loading="lazy" // Add lazy loading
           />
         </div>
       </div>

@@ -99,6 +99,8 @@ export default function Header() {
                 onClick={toggleMenu}
                 className="text-white p-2 relative z-20"
                 aria-label={isMenuOpen ? "Close menu" : "Open menu"}
+                aria-expanded={isMenuOpen}
+                aria-controls="mobile-menu"
               >
                 {isMenuOpen ? (
                   <FaTimes className="animate-spin-once" />
@@ -110,6 +112,7 @@ export default function Header() {
 
             {/* Navigation Links - Desktop view always visible, mobile animated */}
             <div
+              id="mobile-menu"
               className={`
                 ${isMenuOpen ? 'flex mobile-menu-open' : ''}
                 ${isMenuClosing ? 'flex mobile-menu-closing' : ''}

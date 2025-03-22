@@ -1,6 +1,5 @@
-"use client";
 import { useEffect, useMemo, useState } from "react";
-import { useTheme } from "next-themes";
+// Remove the import for ThemeContext
 import { Cloud, fetchSimpleIcons, renderSimpleIcon } from "react-icon-cloud";
 
 export const cloudProps = {
@@ -26,14 +25,14 @@ export const cloudProps = {
     outlineColour: "#000",
     maxSpeed: 0.04,
     minSpeed: 0.02,
-    // dragControl: false,
   },
 };
 
-export const renderCustomIcon = (icon, theme, imageArray) => {
-  const bgHex = theme === "light" ? "#f3f2ef" : "#080510";
-  const fallbackHex = theme === "light" ? "#6e6e73" : "#ffffff";
-  const minContrastRatio = theme === "dark" ? 2 : 1.2;
+export const renderCustomIcon = (icon, darkMode = true) => {
+  // Just use a static theme value (darkMode)
+  const bgHex = darkMode ? "#080510" : "#f3f2ef";
+  const fallbackHex = darkMode ? "#ffffff" : "#6e6e73";
+  const minContrastRatio = darkMode ? 2 : 1.2;
 
   return renderSimpleIcon({
     icon,
@@ -51,17 +50,15 @@ export const renderCustomIcon = (icon, theme, imageArray) => {
 };
 
 export default function IconCloud({
-  // Default to an empty array if not provided
   iconSlugs = [],
-
   imageArray,
 }) {
   const [data, setData] = useState(null);
-  const { theme } = useTheme();
+  // Just use a static darkMode value
+  const darkMode = true;
 
   useEffect(() => {
     if (iconSlugs.length > 0) {
-      // Check if iconSlugs is not empty
       fetchSimpleIcons({ slugs: iconSlugs }).then(setData);
     }
   }, [iconSlugs]);
@@ -70,12 +67,11 @@ export default function IconCloud({
     if (!data) return null;
 
     return Object.values(data.simpleIcons).map((icon) =>
-      renderCustomIcon(icon, theme || "dark")
+      renderCustomIcon(icon, darkMode)
     );
-  }, [data, theme]);
+  }, [data, darkMode]);
 
   return (
-    // @ts-ignore
     <Cloud {...cloudProps}>
       <>
         <>{renderedIcons}</>

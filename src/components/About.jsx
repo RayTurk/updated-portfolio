@@ -20,6 +20,8 @@ import {
 import profileImage from "../assets/images/profile.png";
 import SparklesText from "./ui/sparkles-text";
 import { FlipWords } from "./ui/flip-words";
+import useDocumentTitle from '../hooks/useDocumentTitle';
+
 
 // Skills tag component
 const SkillTag = ({ children }) => {
@@ -106,7 +108,7 @@ const NotIdealClient = ({ title, description, delay = 0 }) => (
     </motion.div>
     <div>
       <h3 className="text-base font-semibold text-white">{title}</h3>
-      <p className="text-gray-400 text-sm">{description}</p>
+      <p className="text-gray-300 text-sm">{description}</p>
     </div>
   </motion.div>
 );
@@ -132,12 +134,14 @@ const PerfectFit = ({ title, description, delay = 0 }) => (
     </motion.div>
     <div>
       <h3 className="text-base font-semibold text-white">{title}</h3>
-      <p className="text-gray-400 text-sm">{description}</p>
+      <p className="text-gray-300 text-sm">{description}</p>
     </div>
   </motion.div>
 );
 
 const About = () => {
+  useDocumentTitle('About Me');
+
   return (
     <main className="min-h-screen pt-32 pb-20 text-white relative overflow-hidden text-sharp">
       {/* Hero Section */}
