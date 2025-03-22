@@ -1,6 +1,6 @@
 import IconCloud from "./ui/icon-cloud";
 
-// Enhanced list of icon slugs matching your experience and related technologies
+// Updated list of icon slugs with corrections
 const slugs = [
   // Core Technologies
   "wordpress",
@@ -25,15 +25,12 @@ const slugs = [
 
   // CMS & E-commerce
   "woocommerce",
-  "elementor",
-  "gutenberg",
   "drupal",
   "stripe",
   "paypal",
 
   // UI/UX
   "figma",
-  "adobexd",
   "sketch",
 
   // DevOps & Deployment
@@ -47,24 +44,20 @@ const slugs = [
   "amazonaws",
 
   // Tools & Optimization
-  "visualstudiocode",
+  "visualstudiocode", // Changed from visualstudiocode
   "webpack",
   "vercel",
   "vite",
   "npm",
   "yarn",
   "composer",
-  "lighthouse",
-  "googleanalytics",
 
   // API & Integration
   "postman",
-  "rest",
   "zapier",
 
   // Mobile
-  "pwa",
-  "responsivedesign"
+  "pwa"
 ];
 
 function IconCloudDemo() {

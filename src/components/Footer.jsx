@@ -35,7 +35,7 @@ const Footer = () => {
             <h2 className="text-2xl font-bold mb-4 bg-gradient-to-r from-blue-400 to-teal-400 bg-clip-text text-transparent">
               Raymond Turk
             </h2>
-            <p className="text-gray-400 mb-4 max-w-md">
+            <p className="text-gray-300 mb-4 max-w-md">
               Full-Stack Developer specializing in WordPress and modern web technologies.
               Building creative solutions for the digital world.
             </p>
@@ -46,29 +46,21 @@ const Footer = () => {
                 href="https://github.com/RayTurk"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-gray-400 hover:text-blue-400 transition-colors"
+                className="text-gray-300 hover:text-blue-400 transition-colors"
               >
                 <FaGithub size={20} />
               </a>
               <a
-                href="https://linkedin.com/in/"
+                href="https://www.linkedin.com/in/raymond-turk-625097137/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-gray-400 hover:text-blue-400 transition-colors"
+                className="text-gray-300 hover:text-blue-400 transition-colors"
               >
                 <FaLinkedin size={20} />
               </a>
               <a
-                href="https://twitter.com/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-gray-400 hover:text-blue-400 transition-colors"
-              >
-                <FaTwitter size={20} />
-              </a>
-              <a
                 href="mailto:rturk.me@gmail.com"
-                className="text-gray-400 hover:text-blue-400 transition-colors"
+                className="text-gray-300 hover:text-blue-400 transition-colors"
               >
                 <FaEnvelope size={20} />
               </a>
@@ -84,7 +76,7 @@ const Footer = () => {
                   to="/"
                   className={`transition-colors ${isActive("/") && location.pathname === "/"
                     ? "text-blue-400 font-medium"
-                    : "text-gray-400 hover:text-blue-400"
+                    : "text-gray-300 hover:text-blue-400"
                     }`}
                 >
                   Home
@@ -95,7 +87,7 @@ const Footer = () => {
                   to="/about"
                   className={`transition-colors ${isActive("/about")
                     ? "text-blue-400 font-medium"
-                    : "text-gray-400 hover:text-blue-400"
+                    : "text-gray-300 hover:text-blue-400"
                     }`}
                 >
                   About
@@ -106,7 +98,7 @@ const Footer = () => {
                   to="/skills"
                   className={`transition-colors ${isActive("/skills")
                     ? "text-blue-400 font-medium"
-                    : "text-gray-400 hover:text-blue-400"
+                    : "text-gray-300 hover:text-blue-400"
                     }`}
                 >
                   Skills
@@ -117,7 +109,7 @@ const Footer = () => {
                   to="/experience"
                   className={`transition-colors ${isActive("/experience")
                     ? "text-blue-400 font-medium"
-                    : "text-gray-400 hover:text-blue-400"
+                    : "text-gray-300 hover:text-blue-400"
                     }`}
                 >
                   Experience
@@ -128,7 +120,7 @@ const Footer = () => {
                   to="/projects"
                   className={`transition-colors ${isActive("/projects")
                     ? "text-blue-400 font-medium"
-                    : "text-gray-400 hover:text-blue-400"
+                    : "text-gray-300 hover:text-blue-400"
                     }`}
                 >
                   Projects
@@ -139,7 +131,7 @@ const Footer = () => {
                   to="/contact"
                   className={`transition-colors ${isActive("/contact")
                     ? "text-blue-400 font-medium"
-                    : "text-gray-400 hover:text-blue-400"
+                    : "text-gray-300 hover:text-blue-400"
                     }`}
                 >
                   Contact
@@ -152,7 +144,7 @@ const Footer = () => {
           <div>
             <h3 className="text-lg font-semibold mb-4 text-white">Contact</h3>
             <ul className="space-y-2">
-              <li className="flex items-center gap-2 text-gray-400">
+              <li className="flex items-center gap-2 text-gray-300">
                 <FaEnvelope size={16} />
                 <a
                   href="mailto:rturk.me@gmail.com"
@@ -161,7 +153,7 @@ const Footer = () => {
                   rturk.me@gmail.com
                 </a>
               </li>
-              <li className="text-gray-400">
+              <li className="text-gray-300">
                 Cleveland, Ohio
               </li>
             </ul>

@@ -4,6 +4,8 @@ import petitti from "../assets/images/petitti.png";
 import geauga from "../assets/images/geauga.png";
 import radair from "../assets/images/radair.png";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import useDocumentTitle from '../hooks/useDocumentTitle';
+
 
 const MacOsButtons = () => (
   <div className="flex gap-2 mb-4">
@@ -14,6 +16,8 @@ const MacOsButtons = () => (
 );
 
 const ProjectShowcase = () => {
+  useDocumentTitle('Projects');
+
   const projects = [
     {
       title: "Petitti Garden Center",
@@ -68,7 +72,7 @@ const ProjectShowcase = () => {
             <div className="md:w-1/2 overflow-hidden rounded-lg">
               <img
                 src={project.image}
-                alt={project.title}
+                alt={`Screenshot of ${project.title} project showing ${project.description.substring(0, 50)}...`}
                 className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
               />
             </div>

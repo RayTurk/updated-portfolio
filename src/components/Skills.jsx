@@ -36,6 +36,8 @@ import { TbBrandVscode } from "react-icons/tb";
 import { BsFileEarmarkCode, BsGrid1X2 } from "react-icons/bs";
 import { MdAnimation } from "react-icons/md";
 import { FcWorkflow } from "react-icons/fc";
+import useDocumentTitle from '../hooks/useDocumentTitle';
+
 
 const SkillCard = ({ icon: Icon, title, skills, color }) => (
   <Card className="group relative overflow-hidden bg-gray-900/80 border-gray-700 hover:scale-[1.02] transition-all duration-300 hover:shadow-xl hover:shadow-blue-500/20">
@@ -70,6 +72,8 @@ const SkillCard = ({ icon: Icon, title, skills, color }) => (
 );
 
 const SkillsSection = () => {
+  useDocumentTitle('Skills');
+
   const skillCategories = [
     {
       icon: Code2,

@@ -1,5 +1,7 @@
 import React from "react";
 import { Code2, Activity, Cpu, Layers, Network, Binary } from "lucide-react";
+import useDocumentTitle from '../hooks/useDocumentTitle';
+
 
 const ExperienceCard = ({
   title,
@@ -52,6 +54,8 @@ const ExperienceCard = ({
 );
 
 const ExperienceSection = () => {
+  useDocumentTitle('Experience');
+
   // Reordered experiences - newest first
   const experiences = [
     {
@@ -113,7 +117,7 @@ const ExperienceSection = () => {
               </h2>
               <div className="absolute inset-0 -z-10 bg-gradient-to-r from-cyan-500/20 to-purple-500/20 blur-3xl rounded-full" />
             </div>
-            <p className="text-lg md:text-xl text-gray-400 font-medium tracking-wide text-center max-w-2xl">
+            <p className="text-lg md:text-xl text-gray-300 font-medium tracking-wide text-center max-w-2xl">
               "Transforming ideas into digital reality, one project at a time"
             </p>
           </div>

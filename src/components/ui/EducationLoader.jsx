@@ -12,7 +12,7 @@ const EducationLoader = () => {
 
       {/* Future Content Section */}
       <div className="mt-6 text-center">
-        <p className="text-sm text-gray-400">Stay tuned!</p>
+        <p className="text-sm text-gray-300">Stay tuned!</p>
       </div>
     </div>
   );
