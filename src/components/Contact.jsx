@@ -141,7 +141,7 @@ export default function Contact() {
 
             {/* Contact Form */}
             <div className="backdrop-blur-lg bg-white/5 p-8 rounded-2xl shadow-xl">
-              <form onSubmit={handleSubmit} className="space-y-6">
+              <form onSubmit={handleSubmit} className="space-y-6" netlify>
                 <div className="grid grid-cols-1 gap-6">
                   <div>
                     <input
