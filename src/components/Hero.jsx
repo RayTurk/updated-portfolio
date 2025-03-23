@@ -117,7 +117,7 @@ const profile = {
                   <SparklesText text="Hi there!" />
                   <span className="relative inline-block">
                     I'm
-                    <span className="typing-effect gradient-text">
+                    <span className="gradient-text">
                       {" "}
                       Ray Turk
                     </span>
