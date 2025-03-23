@@ -8,6 +8,7 @@ import Experience from "./components/Experience";
 import Contact from "./components/Contact";
 import Projects from "./components/Projects";
 import About from "./components/About";
+import Services from "./components/Services"; // Add Services import
 import { Route, Routes, useLocation } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
 import AnimatedPage from "./components/AnimatedPage";
@@ -112,6 +113,11 @@ export default function App() {
                   <Route path="/experience" element={
                     <AnimatedPage>
                       <Experience />
+                    </AnimatedPage>
+                  } />
+                  <Route path="/services" element={
+                    <AnimatedPage>
+                      <Services />
                     </AnimatedPage>
                   } />
                   <Route path="/contact" element={

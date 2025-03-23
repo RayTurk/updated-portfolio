@@ -10,7 +10,8 @@ import {
   FaBars,
   FaTimes,
   FaWordpress,
-  FaShopify
+  FaShopify,
+  FaTools  // Add this import for the Services icon
 } from "react-icons/fa";
 import { Link, useLocation } from "react-router-dom";
 
@@ -83,6 +84,7 @@ export default function Header() {
       text: "Experience",
       path: "/experience",
     },
+    { id: "services", icon: FaTools, text: "Services", path: "/services" }, // Add this line for Services
     { id: "projects", icon: FaLaptopCode, text: "Projects", path: "/projects" },
     { id: "contact", icon: FaEnvelope, text: "Contact", path: "/contact" },
   ];

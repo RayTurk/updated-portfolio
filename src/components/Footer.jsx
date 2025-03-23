@@ -117,6 +117,17 @@ const Footer = () => {
               </li>
               <li>
                 <Link
+                  to="/services"
+                  className={`transition-colors ${isActive("/services")
+                    ? "text-blue-400 font-medium"
+                    : "text-gray-300 hover:text-blue-400"
+                    }`}
+                >
+                  Services
+                </Link>
+              </li>
+              <li>
+                <Link
                   to="/projects"
                   className={`transition-colors ${isActive("/projects")
                     ? "text-blue-400 font-medium"
