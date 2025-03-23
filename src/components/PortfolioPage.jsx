@@ -12,7 +12,7 @@ const AboutMe = () => {
     >
       <div className="container mx-auto px-4 flex flex-col lg:flex-row items-center gap-8 justify-center">
         <div className="content max-w-2xl">
-          <h2 className="text-[#4ECCA3] text-2xl font-bold mb-6">WHO I AM?</h2>
+          <h2 className="text-[#4ECCA3] text-2xl font-bold mb-6">WHO AM I?</h2>
           <p className="text-lg leading-relaxed">
             I'm a Full-Stack Web Developer specializing in WordPress and custom solutions, from small business websites to enterprise-level solutions. With over 5 years of experience in custom theme and plugin development, I specialize in creating efficient, scalable web solutions that bring ideas to life.
           </p>
