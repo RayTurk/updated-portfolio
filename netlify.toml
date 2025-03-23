@@ -1,3 +1,4 @@
+# netlify.toml
 [build]
   command = "npm run build"
   publish = "dist"
@@ -6,3 +7,14 @@
   from = "/*"
   to = "/index.html"
   status = 200
+
+# Add forms capability
+[build.processing.html]
+  pretty_urls = true
+
+# Ensure forms are properly processed
+[dev]
+  command = "npm run dev"
+  framework = "#custom"
+  port = 5173
+  targetPort = 5173

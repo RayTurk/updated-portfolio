@@ -1,6 +1,11 @@
 // scripts/generate-sitemap.js
-const fs = require('fs');
-const path = require('path');
+import fs from 'fs';
+import path from 'path';
+import { fileURLToPath } from 'url';
+
+// Get current directory in ES modules
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 // URLs for the sitemap
 const SITE_URL = 'https://rturk.me';
@@ -59,8 +64,14 @@ const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
     .join('')}
 </urlset>`;
 
-// Write the sitemap to the public directory
-fs.writeFileSync(path.resolve(__dirname, '../public/sitemap.xml'), sitemap);
+// Create dist directory if it doesn't exist
+const distDir = path.resolve(__dirname, '../dist');
+if (!fs.existsSync(distDir)) {
+  fs.mkdirSync(distDir, { recursive: true });
+}
+
+// Write the sitemap to the dist directory
+fs.writeFileSync(path.resolve(distDir, 'sitemap.xml'), sitemap);
 console.log('Sitemap generated successfully!');
 
 // Generate robots.txt file
@@ -69,5 +80,5 @@ Allow: /
 
 Sitemap: ${SITE_URL}/sitemap.xml`;
 
-fs.writeFileSync(path.resolve(__dirname, '../public/robots.txt'), robotsTxt);
+fs.writeFileSync(path.resolve(distDir, 'robots.txt'), robotsTxt);
 console.log('robots.txt generated successfully!');
