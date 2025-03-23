@@ -228,3 +228,9 @@ pre[class*="language-"] {
     scroll-behavior: auto !important;
   }
 }
+
+@media (max-width: 768px) {
+  .no-cursor-mobile::after {
+    display: none;
+  }
+}
