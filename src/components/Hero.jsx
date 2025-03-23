@@ -7,6 +7,7 @@ import PortfolioPage from "./PortfolioPage";
 import SparklesText from "./ui/sparkles-text";
 import { FlipWords } from "./ui/flip-words";
 import resumePDF from "../assets/Ray_Turk_-_Full_Stack_Developer.pdf";
+import Meteors from "./ui/meteors";
 
 
 // AnimatedGrid Component
@@ -91,9 +92,9 @@ const profile = {
           <AnimatedGrid />
 
           {/* Meteors Effect */}
-          {/* <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          <div className="absolute inset-0 overflow-hidden pointer-events-none">
             <Meteors number={10} />
-          </div> */}
+          </div>
 
           {/* Main content container */}
           <div className="container mx-auto flex flex-col lg:flex-row items-center justify-between relative z-10 py-16 lg:py-0 gap-4">
@@ -107,7 +108,7 @@ const profile = {
               <div className="inline-flex items-center gap-2 px-3 sm:px-4 py-2 rounded-full bg-gray-800/50 backdrop-blur-sm border border-gray-700/50 mb-6 sm:mb-8 animate__animated animate__fadeInDown animate__delay-1s">
                 <div className="w-2 h-2 rounded-full bg-blue-400 animate-pulse"></div>
                 <span className="text-gray-300 text-xs sm:text-sm font-medium">
-                  Welcome to my creation
+                  Welcome to my digital playground
                 </span>
               </div>
 
