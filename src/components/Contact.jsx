@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Send, Phone, MapPin, Mail } from "lucide-react";
 import { WEB3FORMS_API_KEY } from '../config.js';
 import useDocumentTitle from '../hooks/useDocumentTitle';
+import SparklesText from "./ui/sparkles-text.jsx";
 
 
 export default function Contact() {
@@ -107,8 +108,8 @@ export default function Contact() {
             {/* Contact Info */}
             <div className="space-y-8">
               <div>
-                <h2 className="text-4xl font-bold mb-4 bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
-                  Get in Touch
+                <h2>
+                  <SparklesText text="Get in Touch" colors={{ first: "#38bdf8", second: "#34d399" }} />
                 </h2>
                 <p className="text-gray-300 text-lg">
                   Have a question or want to work together? Drop me a message!

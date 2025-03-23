@@ -94,7 +94,7 @@ const NotIdealClient = ({ title, description, delay = 0 }) => (
     whileInView={{ opacity: 1, x: 0 }}
     viewport={{ once: true }}
     transition={{ delay: delay * 0.05, duration: 0.3 }}
-    className="flex items-start gap-3 text-sharp hover:bg-red-500/5 p-3 rounded-lg transition-all duration-150"
+    className="flex items-start gap-3 text-sharp hover:bg-red-500/5 p-3 rounded-lg transition-all duration-350"
     whileHover={{ x: 5, backgroundColor: "rgba(239, 68, 68, 0.1)" }}
   >
     <motion.div
@@ -320,8 +320,8 @@ const About = () => {
 
           <ClientCard
             icon={Rocket}
-            title="Fresh Site Builds"
-            description="Companies ready to launch a new web presence or completely redesign their existing site."
+            title="Fresh Site Builds & Updates"
+            description="Companies ready to launch a new web presence, completely redesign their existing site, or update their current website with modern features."
           />
 
           <ClientCard
