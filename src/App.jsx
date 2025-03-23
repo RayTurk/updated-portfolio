@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Hero from "./components/Hero";
 import "./assets/css/index.css";
 import Header from "./components/Header";
@@ -33,6 +33,19 @@ const BackgroundEffects = () => (
 export default function App() {
   const [isOnePage, setIsOnePage] = useState(false); // Toggle state
   const location = useLocation();
+
+  useEffect(() => {
+    // Push page view to dataLayer when route changes
+    if (window.dataLayer) {
+      window.dataLayer.push({
+        event: 'pageview',
+        page: {
+          path: location.pathname,
+          title: document.title
+        }
+      });
+    }
+  }, [location]);
 
   // Combine website and person schema for the homepage
   const homeSchema = [
