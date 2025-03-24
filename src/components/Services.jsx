@@ -30,16 +30,15 @@ const ServiceCard = ({ icon: Icon, title, description, featured = false, delay =
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-50px" }}
       transition={{ duration: 0.5, delay: delay * 0.1 }}
-      className={`relative overflow-visible
- rounded-xl bg-gray-900/50 backdrop-blur-sm border ${featured
-          ? "border-blue-500/20 shadow-lg shadow-blue-500/10"
-          : "border-gray-800 hover:border-blue-500/20 hover:shadow-lg hover:shadow-blue-500/10"
-        } p-6 flex flex-col h-full transition-all duration-300`}
+      className={`relative overflow-visible rounded-xl bg-gray-900/50 backdrop-blur-sm border ${featured
+        ? "border-blue-500/20 shadow-lg shadow-blue-500/10"
+        : "border-gray-800 hover:border-blue-500/20 hover:shadow-lg hover:shadow-blue-500/10"
+        } p-6 flex flex-col h-full transition-all duration-75`}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
       whileHover={{
         y: -10,
-        transition: { duration: 0.3 }
+        transition: { duration: 0.2 }
       }}
     >
       {/* Background gradient effect */}
@@ -48,40 +47,15 @@ const ServiceCard = ({ icon: Icon, title, description, featured = false, delay =
         animate={{
           opacity: isHovered ? 1 : 0,
         }}
-        transition={{ duration: 0.3 }}
+        transition={{ duration: 0.2 }}
       />
 
-      {/* Animated dots in background when hovered */}
-      {isHovered && (
-        <motion.div className="absolute inset-0 overflow-hidden pointer-events-none">
-          {[...Array(5)].map((_, i) => (
-            <motion.div
-              key={i}
-              className="absolute w-2 h-2 bg-blue-400/20 rounded-full"
-              initial={{
-                x: Math.random() * 100 + "%",
-                y: Math.random() * 100 + "%",
-                opacity: 0
-              }}
-              animate={{
-                opacity: [0, 1, 0],
-                scale: [0, 1.5, 0]
-              }}
-              transition={{
-                duration: 2,
-                repeat: Infinity,
-                delay: Math.random() * 2,
-                repeatType: "loop"
-              }}
-            />
-          ))}
-        </motion.div>
-      )}
+      {/* Remove the animated dots in background when hovered */}
 
       {/* Featured indicator with animation */}
       {featured && (
         <motion.div
-          className="absolute -top-3 -right-3 bg-gradient-to-r from-blue-500 to-cyan-500 text-white text-xs font-bold py-1 px-3 rounded-bl-lg rounded-tr-xl shadow-lg "
+          className="absolute -top-3 -right-3 bg-gradient-to-r from-blue-500 to-cyan-500 text-white text-xs font-bold py-1 px-3 rounded-bl-lg rounded-tr-xl shadow-lg"
           initial={{ rotate: 12, scale: 0.9 }}
           animate={{ rotate: [12, 8, 12], scale: [0.9, 1, 0.9] }}
           transition={{ repeat: Infinity, duration: 3, ease: "easeInOut" }}
@@ -95,13 +69,13 @@ const ServiceCard = ({ icon: Icon, title, description, featured = false, delay =
         className={`mb-4 p-3 rounded-lg ${featured
           ? "bg-gradient-to-tr from-blue-500/20 to-cyan-500/20"
           : "bg-blue-500/10 group-hover:bg-gradient-to-tr group-hover:from-blue-500/20 group-hover:to-cyan-500/20"
-          } inline-block transition-all duration-300`}
+          } inline-block transition-all duration-75`}
         animate={{
           rotate: isHovered ? [0, -5, 5, 0] : 0,
           scale: isHovered ? 1.1 : 1
         }}
         transition={{
-          duration: 0.5,
+          duration: 0.3,
           ease: "easeOut"
         }}
       >
@@ -114,7 +88,7 @@ const ServiceCard = ({ icon: Icon, title, description, featured = false, delay =
         animate={{
           color: isHovered ? "#38bdf8" : "#ffffff",
         }}
-        transition={{ duration: 0.3 }}
+        transition={{ duration: 0.2 }}
       >
         {title}
       </motion.h3>
@@ -144,7 +118,7 @@ const ServiceCard = ({ icon: Icon, title, description, featured = false, delay =
       </motion.div>
     </motion.div>
   );
-};
+}
 
 // Benefits Item component
 const BenefitItem = ({ icon: Icon, title, description, delay = 0 }) => (
@@ -152,15 +126,19 @@ const BenefitItem = ({ icon: Icon, title, description, delay = 0 }) => (
     initial={{ opacity: 0, x: -20 }}
     whileInView={{ opacity: 1, x: 0 }}
     viewport={{ once: true }}
-    transition={{ delay: delay * 0.1, duration: 0.5 }}
-    className="flex items-start gap-4 hover:bg-blue-500/5 p-4 rounded-xl transition-all duration-350"
-    whileHover={{ x: 10, backgroundColor: "rgba(59, 130, 246, 0.05)" }}
+    transition={{ delay: delay * 0.05, duration: 0.2 }}
+    className="flex items-start gap-4 hover:bg-blue-500/5 p-4 rounded-xl transition-all duration-75"
+    whileHover={{
+      x: 10,
+      backgroundColor: "rgba(59, 130, 246, 0.05)",
+      transition: { duration: 0.1 }
+    }}
   >
     <motion.div
       className="p-2 rounded-full bg-blue-500/10 mt-1"
       whileHover={{
         rotate: [0, -10, 10, 0],
-        transition: { duration: 0.5 }
+        transition: { duration: 0.2 }
       }}
     >
       <Icon className="h-5 w-5 text-blue-400" />

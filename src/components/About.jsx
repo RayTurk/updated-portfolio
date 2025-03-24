@@ -31,7 +31,7 @@ const SkillTag = ({ children }) => {
 
   return (
     <motion.span
-      className={`inline-block bg-blue-500/20 text-blue-300 rounded-full px-3 py-1 text-sm font-medium mr-2 mb-2 border border-transparent transition-all duration-150 ${isHovered ? 'border-blue-500/50 bg-blue-500/30 shadow-lg shadow-blue-500/20' : ''}`}
+      className={`inline-block bg-blue-500/20 text-blue-300 rounded-full px-3 py-1 text-sm font-medium mr-2 mb-2 border border-transparent transition-all duration-75 ${isHovered ? 'border-blue-500/50 bg-blue-500/30 shadow-lg shadow-blue-500/20' : ''}`}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
       animate={{
@@ -41,7 +41,7 @@ const SkillTag = ({ children }) => {
       transition={{
         type: "spring",
         stiffness: 600,
-        damping: 20
+        damping: 15
       }}
     >
       {children}
@@ -55,13 +55,13 @@ const ClientCard = ({ icon: Icon, title, description }) => {
 
   return (
     <motion.div
-      className="relative overflow-hidden rounded-xl p-6 border border-gray-800 shadow-lg bg-gray-900/50 backdrop-blur-sm transition-all duration-150 group"
+      className="relative overflow-hidden rounded-xl p-6 border border-gray-800 shadow-lg bg-gray-900/50 backdrop-blur-sm transition-all duration-75 group"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-50px" }}
-      transition={{ duration: 0.4 }}
+      transition={{ duration: 0.3 }}
       whileHover={{
         borderColor: "rgba(6, 182, 212, 0.3)",
         y: -5,
@@ -76,7 +76,7 @@ const ClientCard = ({ icon: Icon, title, description }) => {
             scale: isHovered ? 1.1 : 1
           }}
           transition={{
-            duration: 0.2,
+            duration: 0.1,
             ease: "easeOut"
           }}
         >
@@ -85,7 +85,7 @@ const ClientCard = ({ icon: Icon, title, description }) => {
         <h3 className="text-lg font-bold text-white mb-2">{title}</h3>
         <p className="text-gray-300 text-sm">{description}</p>
       </div>
-      <div className="absolute top-0 right-0 -mt-4 -mr-4 w-24 h-24 bg-cyan-500/10 rounded-full blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-200"></div>
+      <div className="absolute top-0 right-0 -mt-4 -mr-4 w-24 h-24 bg-cyan-500/10 rounded-full blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-100"></div>
     </motion.div>
   );
 };
@@ -95,15 +95,19 @@ const NotIdealClient = ({ title, description, delay = 0 }) => (
     initial={{ opacity: 0, x: -20 }}
     whileInView={{ opacity: 1, x: 0 }}
     viewport={{ once: true }}
-    transition={{ delay: delay * 0.05, duration: 0.3 }}
-    className="flex items-start gap-3 text-sharp hover:bg-red-500/5 p-3 rounded-lg transition-all duration-350"
-    whileHover={{ x: 5, backgroundColor: "rgba(239, 68, 68, 0.1)" }}
+    transition={{ delay: delay * 0.05, duration: 0.2 }}
+    className="flex items-start gap-3 text-sharp hover:bg-red-500/5 p-3 rounded-lg transition-all duration-75"
+    whileHover={{
+      x: 5,
+      backgroundColor: "rgba(239, 68, 68, 0.1)",
+      transition: { duration: 0.1 }
+    }}
   >
     <motion.div
       className="p-1 rounded-full bg-red-500/10 mt-1"
       whileHover={{
         rotate: [0, -5, 5, 0],
-        transition: { duration: 0.2 }
+        transition: { duration: 0.1 }
       }}
     >
       <X className="h-5 w-5 text-red-400" />
@@ -121,15 +125,19 @@ const PerfectFit = ({ title, description, delay = 0 }) => (
     initial={{ opacity: 0, x: 20 }}
     whileInView={{ opacity: 1, x: 0 }}
     viewport={{ once: true }}
-    transition={{ delay: delay * 0.05, duration: 0.3 }}
-    className="flex items-start gap-3 text-sharp hover:bg-green-500/5 p-3 rounded-lg transition-all duration-150"
-    whileHover={{ x: -5, backgroundColor: "rgba(34, 197, 94, 0.1)" }}
+    transition={{ delay: delay * 0.05, duration: 0.2 }}
+    className="flex items-start gap-3 text-sharp hover:bg-green-500/5 p-3 rounded-lg transition-all duration-75"
+    whileHover={{
+      x: -5,
+      backgroundColor: "rgba(34, 197, 94, 0.1)",
+      transition: { duration: 0.1 }
+    }}
   >
     <motion.div
       className="p-1 rounded-full bg-green-500/10 mt-1"
       whileHover={{
         scale: 1.2,
-        transition: { duration: 0.15 }
+        transition: { duration: 0.1 }
       }}
     >
       <ThumbsUp className="h-5 w-5 text-green-400" />

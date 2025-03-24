@@ -5,6 +5,44 @@ import SparklesText from "./ui/sparkles-text.jsx";
 import SEO from './SEO';
 import { generateBreadcrumbSchema } from '../utils/schema';
 
+// AnimatedGrid Component
+const AnimatedGrid = () => {
+  return (
+    <div className="absolute inset-0 overflow-hidden pointer-events-none">
+      <div className="relative w-full h-full">
+        <div className="absolute inset-0 [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]">
+          <div className="absolute inset-0 grid grid-cols-[repeat(40,1fr)] opacity-20">
+            {[...Array(40)].map((_, i) => (
+              <div
+                key={`v-${i}`}
+                className="relative h-full w-full border-r border-blue-500/10"
+                style={{
+                  animation: `gridPulse ${2 + Math.random() * 2
+                    }s ease-in-out infinite`,
+                  animationDelay: `${Math.random() * 2}s`,
+                }}
+              />
+            ))}
+          </div>
+          <div className="absolute inset-0 grid grid-rows-[repeat(40,1fr)] opacity-20">
+            {[...Array(40)].map((_, i) => (
+              <div
+                key={`h-${i}`}
+                className="relative w-full h-full border-b border-blue-500/10"
+                style={{
+                  animation: `gridPulse ${2 + Math.random() * 2
+                    }s ease-in-out infinite`,
+                  animationDelay: `${Math.random() * 2}s`,
+                }}
+              />
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
 export default function Contact() {
   useDocumentTitle('Contact');
 
@@ -89,6 +127,8 @@ export default function Contact() {
       >
         <section className="hero min-h-screen flex items-center relative px-4 sm:px-6 lg:px-8">
           <div className="container mx-auto">
+            {/* Animated Grid Background */}
+            <AnimatedGrid />
             <div className="grid lg:grid-cols-2 gap-12 items-center">
               {/* Contact Info */}
               <div className="space-y-8">
@@ -103,8 +143,8 @@ export default function Contact() {
 
                 <div className="space-y-6">
                   <div className="flex items-center space-x-4">
-                    <div className="bg-purple-500/10 p-3 rounded-lg">
-                      <Mail className="w-6 h-6 text-purple-400" />
+                    <div className="bg-blue-500/10 p-3 rounded-lg">
+                      <Mail className="w-6 h-6 text-blue-400" />
                     </div>
                     <div>
                       <h3 className="font-semibold">Email</h3>
@@ -113,8 +153,8 @@ export default function Contact() {
                   </div>
 
                   <div className="flex items-center space-x-4">
-                    <div className="bg-pink-500/10 p-3 rounded-lg">
-                      <MapPin className="w-6 h-6 text-pink-400" />
+                    <div className="bg-green-500/10 p-3 rounded-lg">
+                      <MapPin className="w-6 h-6 text-green-400" />
                     </div>
                     <div>
                       <h3 className="font-semibold">Location</h3>

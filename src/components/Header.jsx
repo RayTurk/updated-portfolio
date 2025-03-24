@@ -96,7 +96,7 @@ export default function Header() {
           <nav className="bg-gray-800/90 backdrop-blur-md md:rounded-full px-4 md:px-6 py-2.5 text-sharp">
             {/* Mobile Menu Button */}
             <div className="flex justify-between items-center md:hidden px-2">
-              <Link to="/" className="text-white font-bold">Portfolio</Link>
+              <Link to="/" className="text-white font-bold">rturk.me</Link>
               <button
                 onClick={toggleMenu}
                 className="text-white p-2 relative z-20"

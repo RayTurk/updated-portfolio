@@ -2,12 +2,11 @@ import React, { useState, useEffect } from "react";
 import Prism from "prismjs";
 import "prismjs/components/prism-javascript";
 import "../assets/css/tomorrow.css";
-// import Meteors from "./ui/meteors";
+import Meteors from "./ui/meteors";
 import PortfolioPage from "./PortfolioPage";
 import SparklesText from "./ui/sparkles-text";
 import { FlipWords } from "./ui/flip-words";
 import resumePDF from "../assets/Ray_Turk_-_Full_Stack_Developer.pdf";
-import Meteors from "./ui/meteors";
 
 
 // AnimatedGrid Component
