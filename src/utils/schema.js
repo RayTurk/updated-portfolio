@@ -13,8 +13,7 @@ export const generatePersonSchema = () => {
     "jobTitle": "Full-Stack Web Developer",
     "sameAs": [
       "https://github.com/RayTurk",
-      "https://linkedin.com/in/ray-turk",
-      "https://twitter.com/RayTurkDev"
+      "https://https://www.linkedin.com/in/raymond-turk-625097137/"
     ],
     "worksFor": {
       "@type": "Organization",
