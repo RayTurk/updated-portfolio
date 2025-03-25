@@ -212,9 +212,9 @@ const Services = () => {
   return (
     <>
       <SEO
-        title="Services"
-        description="Professional web development services offered by Raymond Turk, including WordPress development, Shopify customization, and full-stack solutions."
-        keywords={['WordPress Development', 'Shopify Customization', 'Web Development Services', 'Custom Themes', 'E-commerce Solutions', 'Performance Optimization']}
+        title="Full-Stack Development Services | Raymond Turk"
+        description="Expert WordPress theme development, Shopify customization, and web maintenance services. Delivering high-performance websites that drive business growth in Cleveland and beyond."
+        keywords={['WordPress Development', 'Shopify Customization', 'Website Maintenance', 'Custom Themes', 'E-commerce Solutions', 'Cleveland Web Developer']}
         canonical="https://rturk.me/services"
         schema={breadcrumbSchema}
       />

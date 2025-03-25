@@ -82,8 +82,7 @@ export const generateServiceSchema = () => {
     },
     "sameAs": [
       "https://github.com/RayTurk",
-      "https://linkedin.com/in/ray-turk",
-      "https://twitter.com/RayTurkDev"
+      "https://www.linkedin.com/in/raymond-turk-625097137/",
     ],
     "makesOffer": [
       {
@@ -146,5 +145,119 @@ export const generateBreadcrumbSchema = (items) => {
       "name": item.name,
       "item": item.url
     }))
+  };
+};
+
+/**
+ * Generate LocalBusiness schema for local SEO
+ */
+export const generateLocalBusinessSchema = () => {
+  return {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "Raymond Turk Web Development",
+    "image": "https://rturk.me/profile-image.jpg",
+    "url": "https://rturk.me",
+    "telephone": "", // Add your business phone if available
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Cleveland",
+      "addressRegion": "OH",
+      "addressCountry": "US"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 41.4993,
+      "longitude": -81.6944
+    },
+    "priceRange": "$$",
+    "sameAs": [
+      "https://github.com/RayTurk",
+      "https://linkedin.com/in/ray-turk",
+      "https://twitter.com/RayTurkDev"
+    ],
+    "areaServed": ["Cleveland", "Ohio", "United States"],
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Web Development Services",
+      "itemListElement": [
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "WordPress Development",
+            "description": "Custom WordPress theme and plugin development for businesses."
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Shopify Development",
+            "description": "Custom Shopify store setup and theme development."
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Website Maintenance",
+            "description": "Ongoing website maintenance and support services."
+          }
+        }
+      ]
+    }
+  };
+};
+
+/**
+ * Generate FAQ Page schema for common questions
+ */
+export const generateFAQSchema = () => {
+  return {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What services do you offer as a web developer?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "I offer a wide range of web development services including custom WordPress theme development, Shopify store creation and customization, website maintenance, performance optimization, and custom plugin development. I specialize in creating responsive, user-friendly websites that help businesses achieve their online goals."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Do you work with clients outside of Cleveland?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, while I'm based in Cleveland, Ohio, I work with clients throughout the United States. I use tools like Zoom, Slack, and email to maintain clear communication with remote clients, ensuring the same quality of service regardless of location."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How long does it typically take to build a custom WordPress website?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The timeline for a custom WordPress website varies depending on the complexity of the project. A basic website might take 2-4 weeks, while more complex sites with custom functionality could take 6-8 weeks or more. I'll provide a detailed timeline during our initial consultation based on your specific requirements."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Do you offer website maintenance services?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, I offer comprehensive website maintenance services including regular updates, security monitoring, performance optimization, and content updates. I recommend ongoing maintenance for all websites to ensure they remain secure, fast, and up-to-date."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What makes you different from other web developers?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "I combine technical expertise with a deep understanding of business needs. I focus on creating websites that not only look great but also drive results through improved user experience, faster loading speeds, and SEO best practices. I provide direct communication without account managers or middlemen, leading to more efficient project execution and better outcomes."
+        }
+      }
+    ]
   };
 };

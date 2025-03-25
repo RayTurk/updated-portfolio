@@ -74,9 +74,9 @@ const ProjectShowcase = () => {
   return (
     <>
       <SEO
-        title="Projects"
-        description="Portfolio of web development projects by Raymond Turk, including WordPress sites, custom themes, and e-commerce solutions."
-        keywords={['WordPress Projects', 'Web Development Portfolio', 'Custom Website Examples', 'Petitti Garden Center', 'Geauga County', 'RadAir']}
+        title="Web Development Portfolio | Raymond Turk"
+        description="Explore my web development projects including custom WordPress sites, Shopify stores, and business solutions. See how I've helped clients achieve their digital goals."
+        keywords={['WordPress Projects', 'Web Development Portfolio', 'Custom Website Examples', 'Shopify Stores', 'Cleveland Developer']}
         canonical="https://rturk.me/projects"
         schema={schemas}
       />

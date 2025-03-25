@@ -167,9 +167,9 @@ const About = () => {
   return (
     <>
       <SEO
-        title="About Me"
-        description="Full-Stack Web Developer with over 5 years of experience in WordPress and custom solutions. Based in Cleveland, Ohio."
-        keywords={['WordPress Expert', 'Problem Solver', 'Solution Architect', 'PHP Developer', 'React Developer', 'Cleveland Developer']}
+        title="About Raymond Turk | Cleveland Web Developer"
+        description="5+ years of experience creating custom WordPress and Shopify solutions. Learn about my approach to web development and how I can help your business succeed online."
+        keywords={['WordPress Expert', 'Cleveland Developer', 'Full-Stack Developer', 'Shopify Specialist', 'Web Developer Biography']}
         canonical="https://rturk.me/about"
         schema={aboutSchema}
       />
@@ -440,7 +440,7 @@ const About = () => {
                 />
 
                 <PerfectFit
-                  title="WordPress & Shopify Expertise"
+                  title="Full-Stack Expertise"
                   description="Specialized knowledge in these platforms for optimal performance, security, and functionality."
                   delay={4}
                 />

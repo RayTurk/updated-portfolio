@@ -7,6 +7,9 @@ import PortfolioPage from "./PortfolioPage";
 import SparklesText from "./ui/sparkles-text";
 import { FlipWords } from "./ui/flip-words";
 import resumePDF from "../assets/Ray_Turk_-_Full_Stack_Developer.pdf";
+import SEO from './SEO';
+import { generateWebsiteSchema, generatePersonSchema, generateLocalBusinessSchema, generateFAQSchema } from '../utils/schema';
+
 
 
 // AnimatedGrid Component
@@ -48,16 +51,23 @@ const AnimatedGrid = () => {
 };
 
 export default function Hero() {
+  const homeSchema = [
+    generateWebsiteSchema(),
+    generatePersonSchema(),
+    generateLocalBusinessSchema(),
+    generateFAQSchema()
+  ];
+
   const words = [
     "Full-Stack Developer",
     "UI/UX Enthusiast",
-    "WordPress & Shopify",
+    "Full-Stack",
   ];
 
   const [code] = useState(`
 const profile = {
     name: 'Raymond Turk',
-    title: 'Full-Stack Developer | WordPress & Shopify | Problem Solver',
+    title: 'Full-Stack Developer | Full-Stack | Problem Solver',
     skills: [
         'WordPress', 'Shopify', 'PHP', 'React',
         'MySQL', 'JavaScript', 'TypeScript',
@@ -83,6 +93,13 @@ const profile = {
 
   return (
     <>
+      <SEO
+        title="Raymond Turk | WordPress & Shopify Developer in Cleveland"
+        description="Cleveland-based Full-Stack Web Developer specializing in custom WordPress solutions, Shopify stores, and responsive web applications. Let's build something amazing together."
+        keywords={['WordPress Expert', 'Shopify Developer', 'Cleveland Web Developer', 'Custom Web Solutions', 'E-commerce Developer']}
+        canonical="https://rturk.me/"
+        schema={homeSchema}
+      />
       <main className="pt-20 lg:pt-[0rem] bg-gradient-to-b from-[#020617] via-[#0a0f1f] to-[#000D1A]/90 text-white min-h-screen">
         <section className="hero min-h-screen flex items-center relative px-4 sm:px-6 lg:px-8">
           <div className="absolute inset-0 bg-gradient-to-b from-transparent to-gray-900/50"></div>
