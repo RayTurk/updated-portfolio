@@ -3,12 +3,11 @@ import Hero from "./components/Hero";
 import "./assets/css/index.css";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
-import Skills from "./components/Skills";
 import Experience from "./components/Experience";
 import Contact from "./components/Contact";
 import Projects from "./components/Projects";
-import About from "./components/About";
-import Services from "./components/Services"; // Add Services import
+import AboutAndSkills from "./components/AboutAndSkills"; // Import combined component
+import Services from "./components/Services";
 import { Route, Routes, useLocation } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
 import AnimatedPage from "./components/AnimatedPage";
@@ -83,9 +82,9 @@ export default function App() {
                   <h1 id="hero-heading" className="sr-only">Home</h1>
                   <Hero />
                 </section>
-                <section aria-labelledby="skills-heading">
-                  <h2 id="skills-heading" className="sr-only">Skills</h2>
-                  <Skills />
+                <section aria-labelledby="about-heading">
+                  <h2 id="about-heading" className="sr-only">About & Skills</h2>
+                  <AboutAndSkills />
                 </section>
                 <section aria-labelledby="experience-heading">
                   <h2 id="experience-heading" className="sr-only">Experience</h2>
@@ -105,14 +104,19 @@ export default function App() {
                       <Hero />
                     </AnimatedPage>
                   } />
-                  <Route path="/skills" element={
+                  <Route path="/about" element={
                     <AnimatedPage>
-                      <Skills />
+                      <AboutAndSkills />
                     </AnimatedPage>
                   } />
                   <Route path="/experience" element={
                     <AnimatedPage>
                       <Experience />
+                    </AnimatedPage>
+                  } />
+                  <Route path="/projects" element={
+                    <AnimatedPage>
+                      <Projects />
                     </AnimatedPage>
                   } />
                   <Route path="/services" element={
@@ -123,16 +127,6 @@ export default function App() {
                   <Route path="/contact" element={
                     <AnimatedPage>
                       <Contact />
-                    </AnimatedPage>
-                  } />
-                  <Route path="/projects" element={
-                    <AnimatedPage>
-                      <Projects />
-                    </AnimatedPage>
-                  } />
-                  <Route path="/about" element={
-                    <AnimatedPage>
-                      <About />
                     </AnimatedPage>
                   } />
                 </Routes>

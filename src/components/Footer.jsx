@@ -3,7 +3,6 @@ import { Link, useLocation } from "react-router-dom";
 import {
   FaLinkedin,
   FaGithub,
-  FaTwitter,
   FaEnvelope,
   FaCode,
   FaHeart
@@ -19,6 +18,11 @@ const Footer = () => {
       return location.pathname === path;
     }
     return location.pathname.startsWith(path);
+  };
+
+  // Helper function to determine if the work section is active
+  const isWorkActive = () => {
+    return location.pathname.startsWith("/experience") || location.pathname.startsWith("/projects");
   };
 
   return (
@@ -93,27 +97,35 @@ const Footer = () => {
                   About
                 </Link>
               </li>
-              <li>
-                <Link
-                  to="/skills"
-                  className={`transition-colors ${isActive("/skills")
-                    ? "text-blue-400 font-medium"
-                    : "text-gray-300 hover:text-blue-400"
-                    }`}
-                >
-                  Skills
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to="/experience"
-                  className={`transition-colors ${isActive("/experience")
-                    ? "text-blue-400 font-medium"
-                    : "text-gray-300 hover:text-blue-400"
-                    }`}
-                >
-                  Experience
-                </Link>
+              {/* Work section with nested links */}
+              <li className="space-y-2">
+                <span className={`block ${isWorkActive() ? "text-blue-400 font-medium" : "text-gray-300"}`}>
+                  Work
+                </span>
+                <ul className="pl-4 space-y-2">
+                  <li>
+                    <Link
+                      to="/experience"
+                      className={`transition-colors ${isActive("/experience")
+                        ? "text-blue-400 font-medium"
+                        : "text-gray-300 hover:text-blue-400"
+                        }`}
+                    >
+                      Experience
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      to="/projects"
+                      className={`transition-colors ${isActive("/projects")
+                        ? "text-blue-400 font-medium"
+                        : "text-gray-300 hover:text-blue-400"
+                        }`}
+                    >
+                      Projects
+                    </Link>
+                  </li>
+                </ul>
               </li>
               <li>
                 <Link
@@ -124,17 +136,6 @@ const Footer = () => {
                     }`}
                 >
                   Services
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to="/projects"
-                  className={`transition-colors ${isActive("/projects")
-                    ? "text-blue-400 font-medium"
-                    : "text-gray-300 hover:text-blue-400"
-                    }`}
-                >
-                  Projects
                 </Link>
               </li>
               <li>

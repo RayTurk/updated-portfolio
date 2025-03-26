@@ -1,17 +1,16 @@
 import React, { useState, useEffect, useRef } from "react";
 import {
   FaHome,
-  FaLaptopCode,
   FaUser,
-  FaBriefcase,
-  FaGraduationCap,
   FaCode,
+  FaBriefcase,
+  FaTools,
+  FaBook,
   FaEnvelope,
   FaBars,
   FaTimes,
-  FaWordpress,
-  FaShopify,
-  FaTools  // Add this import for the Services icon
+  FaChevronDown,
+  FaLaptopCode
 } from "react-icons/fa";
 import { Link, useLocation } from "react-router-dom";
 
@@ -21,18 +20,42 @@ export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isMenuClosing, setIsMenuClosing] = useState(false);
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+  const [dropdownOpen, setDropdownOpen] = useState(false);
   const closeTimeoutRef = useRef(null);
+  const dropdownRef = useRef(null);
 
   // Update active link when location changes
   useEffect(() => {
     const path = location.pathname.substring(1) || "home";
-    setActiveLink(path);
+
+    // Set active state for parent menu items
+    if (path.startsWith("experience") || path.startsWith("projects")) {
+      setActiveLink("work");
+    } else {
+      setActiveLink(path);
+    }
   }, [location]);
 
   useEffect(() => {
     const handleResize = () => setWindowWidth(window.innerWidth);
     window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
+
+    // Close dropdown when clicking outside
+    const handleClickOutside = (event) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setDropdownOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+      document.removeEventListener("mousedown", handleClickOutside);
+      if (closeTimeoutRef.current) {
+        clearTimeout(closeTimeoutRef.current);
+      }
+    };
   }, []);
 
   // Close mobile menu when window resizes to desktop size
@@ -42,21 +65,12 @@ export default function Header() {
     }
   }, [windowWidth, isMenuOpen]);
 
-  // Cleanup timeout on unmount
-  useEffect(() => {
-    return () => {
-      if (closeTimeoutRef.current) {
-        clearTimeout(closeTimeoutRef.current);
-      }
-    };
-  }, []);
-
   const handleMenuClose = () => {
     setIsMenuClosing(true);
     closeTimeoutRef.current = setTimeout(() => {
       setIsMenuOpen(false);
       setIsMenuClosing(false);
-    }, 300); // Match this to your animation duration
+    }, 300);
   };
 
   const toggleMenu = () => {
@@ -72,20 +86,30 @@ export default function Header() {
     if (isMenuOpen) {
       handleMenuClose();
     }
+    setDropdownOpen(false);
   };
 
+  const toggleDropdown = (e) => {
+    e.preventDefault();
+    setDropdownOpen(!dropdownOpen);
+  };
+
+  // Define main nav links
   const navLinks = [
     { id: "home", icon: FaHome, text: "Home", path: "/" },
     { id: "about", icon: FaUser, text: "About", path: "/about" },
-    { id: "skills", icon: FaCode, text: "Skills", path: "/skills" },
     {
-      id: "experience",
+      id: "work",
       icon: FaBriefcase,
-      text: "Experience",
-      path: "/experience",
+      text: "Work",
+      path: "#",
+      hasDropdown: true,
+      dropdownItems: [
+        { id: "experience", icon: FaBriefcase, text: "Experience", path: "/experience" },
+        { id: "projects", icon: FaLaptopCode, text: "Projects", path: "/projects" }
+      ]
     },
-    { id: "services", icon: FaTools, text: "Services", path: "/services" }, // Add this line for Services
-    { id: "projects", icon: FaLaptopCode, text: "Projects", path: "/projects" },
+    { id: "services", icon: FaTools, text: "Services", path: "/services" },
     { id: "contact", icon: FaEnvelope, text: "Contact", path: "/contact" },
   ];
 
@@ -123,29 +147,85 @@ export default function Header() {
               `}
             >
               <div className="flex flex-col md:flex-row md:items-center gap-1 md:gap-1 lg:gap-2 py-1 md:py-0">
-                {navLinks.map(({ id, icon: Icon, text, path }, index) => (
-                  <Link
-                    key={id}
-                    to={path}
-                    onClick={() => handleLinkClick(id)}
-                    className={`px-3 py-3 md:py-1.5 rounded-lg md:rounded-full text-sm font-medium
-                      transition-all duration-300 flex items-center gap-3
-                      hover:bg-gray-700/70 relative
-                      ${activeLink === id
-                        ? "bg-gray-700/80 text-white"
-                        : "text-gray-300 hover:text-white"
-                      }
-                      mobile-menu-item text-sharp
-                    `}
-                    style={{
-                      animationDelay: isMenuClosing ? `${(navLinks.length - 1 - index) * 0.05}s` : `${index * 0.1}s`
-                    }}
-                  >
-                    <Icon
-                      className={`text-lg ${activeLink === id ? "scale-110 text-blue-400" : ""}`}
-                    />
-                    <span className="inline">{text}</span>
-                  </Link>
+                {navLinks.map(({ id, icon: Icon, text, path, hasDropdown, dropdownItems }, index) => (
+                  hasDropdown ? (
+                    // Dropdown menu
+                    <div
+                      key={id}
+                      className="relative"
+                      ref={dropdownRef}
+                    >
+                      <button
+                        onClick={toggleDropdown}
+                        className={`px-3 py-3 md:py-1.5 rounded-lg md:rounded-full text-sm font-medium
+                          transition-all duration-300 flex items-center gap-3
+                          hover:bg-gray-700/70 w-full text-left
+                          ${activeLink === id
+                            ? "bg-gray-700/80 text-white"
+                            : "text-gray-300 hover:text-white"
+                          }
+                          mobile-menu-item text-sharp
+                        `}
+                        style={{
+                          animationDelay: isMenuClosing ? `${(navLinks.length - 1 - index) * 0.05}s` : `${index * 0.1}s`
+                        }}
+                      >
+                        <Icon
+                          className={`text-lg ${activeLink === id ? "scale-110 text-blue-400" : ""}`}
+                        />
+                        <span className="inline">{text}</span>
+                        <FaChevronDown className={`ml-1 transition-transform duration-200 ${dropdownOpen ? 'rotate-180' : ''}`} />
+                      </button>
+
+                      {/* Dropdown content */}
+                      <div
+                        className={`
+                          absolute left-0 mt-2 w-48 rounded-md shadow-lg bg-gray-800 ring-1 ring-black ring-opacity-5 focus:outline-none
+                          transition-all duration-200 origin-top-right
+                          md:top-full z-50
+                          ${dropdownOpen ? 'opacity-100 scale-100' : 'opacity-0 scale-95 pointer-events-none'}
+                        `}
+                      >
+                        <div className="py-1">
+                          {dropdownItems.map((item) => (
+                            <Link
+                              key={item.id}
+                              to={item.path}
+                              onClick={() => handleLinkClick(item.id)}
+                              className="block px-4 py-2 text-sm text-gray-300 hover:bg-gray-700 hover:text-white flex items-center gap-2"
+                            >
+                              <item.icon className="text-lg" />
+                              <span>{item.text}</span>
+                            </Link>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+                  ) : (
+                    // Regular link
+                    <Link
+                      key={id}
+                      to={path}
+                      onClick={() => handleLinkClick(id)}
+                      className={`px-3 py-3 md:py-1.5 rounded-lg md:rounded-full text-sm font-medium
+                        transition-all duration-300 flex items-center gap-3
+                        hover:bg-gray-700/70 relative
+                        ${activeLink === id
+                          ? "bg-gray-700/80 text-white"
+                          : "text-gray-300 hover:text-white"
+                        }
+                        mobile-menu-item text-sharp
+                      `}
+                      style={{
+                        animationDelay: isMenuClosing ? `${(navLinks.length - 1 - index) * 0.05}s` : `${index * 0.1}s`
+                      }}
+                    >
+                      <Icon
+                        className={`text-lg ${activeLink === id ? "scale-110 text-blue-400" : ""}`}
+                      />
+                      <span className="inline">{text}</span>
+                    </Link>
+                  )
                 ))}
               </div>
             </div>
