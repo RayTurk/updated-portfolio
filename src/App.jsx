@@ -8,8 +8,6 @@ import Contact from "./components/Contact";
 import Projects from "./components/Projects";
 import AboutAndSkills from "./components/AboutAndSkills"; // Import combined component
 import Services from "./components/Services";
-import Blog from "./components/Blog";
-import BlogPost from "./components/BlogPost";
 import { Route, Routes, useLocation } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
 import AnimatedPage from "./components/AnimatedPage";
@@ -124,16 +122,6 @@ export default function App() {
                   <Route path="/services" element={
                     <AnimatedPage>
                       <Services />
-                    </AnimatedPage>
-                  } />
-                  <Route path="/blog" element={
-                    <AnimatedPage>
-                      <Blog />
-                    </AnimatedPage>
-                  } />
-                  <Route path="/blog/:slug" element={
-                    <AnimatedPage>
-                      <BlogPost />
                     </AnimatedPage>
                   } />
                   <Route path="/contact" element={

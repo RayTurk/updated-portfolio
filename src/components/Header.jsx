@@ -110,7 +110,6 @@ export default function Header() {
       ]
     },
     { id: "services", icon: FaTools, text: "Services", path: "/services" },
-    { id: "blog", icon: FaBook, text: "Blog", path: "/blog" },
     { id: "contact", icon: FaEnvelope, text: "Contact", path: "/contact" },
   ];
 
