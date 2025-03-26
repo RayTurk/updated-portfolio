@@ -44,7 +44,6 @@ const slugs = [
   "amazonaws", // This will be changed to "amazon"
 
   // Tools & Optimization
-  "visualstudiocode", // This will be changed to "vscode"
   "webpack",
   "vercel",
   "vite",
@@ -64,7 +63,6 @@ const slugs = [
 const fixedSlugs = slugs.map(slug => {
   // Fix known problematic slugs
   if (slug === "amazonaws") return "amazon";
-  if (slug === "visualstudiocode") return "vscode";
   return slug;
 });
 

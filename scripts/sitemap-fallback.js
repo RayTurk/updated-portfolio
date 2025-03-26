@@ -13,7 +13,7 @@ const __dirname = path.dirname(__filename);
  */
 
 // URLs and configuration
-const SITE_URL = 'https://rturk.me';
+const SITE_URL = 'http://rturk.me';
 
 // Static routes (same as in the main sitemap generator)
 const staticRoutes = [

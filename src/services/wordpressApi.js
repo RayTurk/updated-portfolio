@@ -41,7 +41,7 @@ export const getPosts = async ({
     const totalPosts = response.headers.get('X-WP-Total');
     const totalPages = response.headers.get('X-WP-TotalPages');
 
-    const posts = await response.json();
+    const post = await getPost(slug, true);
 
     return {
       posts,
