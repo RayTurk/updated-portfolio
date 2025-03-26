@@ -1,6 +1,6 @@
 import IconCloud from "./ui/icon-cloud";
 
-// Updated list of icon slugs with corrections
+// Updated list of icon slugs with verified names
 const slugs = [
   // Core Technologies
   "wordpress",
@@ -41,10 +41,10 @@ const slugs = [
   "nginx",
   "apache",
   "docker",
-  "amazonaws",
+  "amazonaws", // This will be changed to "amazon"
 
   // Tools & Optimization
-  "visualstudiocode", // Changed from visualstudiocode
+  "visualstudiocode", // This will be changed to "vscode"
   "webpack",
   "vercel",
   "vite",
@@ -60,10 +60,18 @@ const slugs = [
   "pwa"
 ];
 
+// Fix problematic icon names
+const fixedSlugs = slugs.map(slug => {
+  // Fix known problematic slugs
+  if (slug === "amazonaws") return "amazon";
+  if (slug === "visualstudiocode") return "vscode";
+  return slug;
+});
+
 function IconCloudDemo() {
   return (
     <div className="relative flex size-full max-w-lg items-center justify-center overflow-hidden rounded-lg px-20 pb-20 pt-8 bg-transparent">
-      <IconCloud iconSlugs={slugs} />
+      <IconCloud iconSlugs={fixedSlugs} />
     </div>
   );
 }
