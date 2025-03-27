@@ -5,7 +5,7 @@
  */
 
 // You'll replace this with your WordPress site URL
-const API_URL = 'http://cms.rturk.me/wp-json/wp/v2';
+const API_URL = 'https://cms.rturk.me/wp-json/wp/v2';
 
 /**
  * Fetch posts with pagination and optional filtering
@@ -41,7 +41,8 @@ export const getPosts = async ({
     const totalPosts = response.headers.get('X-WP-Total');
     const totalPages = response.headers.get('X-WP-TotalPages');
 
-    const post = await getPost(slug, true);
+    // Get the posts from the response
+    const posts = await response.json();
 
     return {
       posts,
@@ -65,8 +66,8 @@ export const getPost = async (identifier, isSlug = false) => {
     let url;
 
     if (isSlug) {
-      const { posts } = await getPosts({ slug: identifier, perPage: 1 });
-      return posts[0] || null;
+      // Instead of calling getPosts, create a direct query
+      url = `${API_URL}/posts?_embed&slug=${encodeURIComponent(identifier)}&per_page=1`;
     } else {
       url = `${API_URL}/posts/${identifier}?_embed`;
     }
@@ -80,7 +81,10 @@ export const getPost = async (identifier, isSlug = false) => {
       throw new Error(`HTTP error ${response.status}`);
     }
 
-    return await response.json();
+    const data = await response.json();
+
+    // If it's a slug query, return the first post or null
+    return isSlug ? (data[0] || null) : data;
   } catch (error) {
     console.error('Error fetching post:', error);
     throw error;
