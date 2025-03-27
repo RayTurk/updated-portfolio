@@ -1,13 +1,17 @@
+// src/App.jsx (updated with blog routes)
 import React, { useState, useEffect } from "react";
 import Hero from "./components/Hero";
 import "./assets/css/index.css";
+import "./assets/css/wordpress-content.css"; // Import WordPress content styles
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Experience from "./components/Experience";
 import Contact from "./components/Contact";
 import Projects from "./components/Projects";
-import AboutAndSkills from "./components/AboutAndSkills"; // Import combined component
+import AboutAndSkills from "./components/AboutAndSkills";
 import Services from "./components/Services";
+import Blog from "./components/Blog"; // Import Blog component
+import BlogPost from "./components/BlogPost"; // Import BlogPost component
 import { Route, Routes, useLocation } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
 import AnimatedPage from "./components/AnimatedPage";
@@ -127,6 +131,17 @@ export default function App() {
                   <Route path="/contact" element={
                     <AnimatedPage>
                       <Contact />
+                    </AnimatedPage>
+                  } />
+                  {/* Blog routes */}
+                  <Route path="/blog" element={
+                    <AnimatedPage>
+                      <Blog />
+                    </AnimatedPage>
+                  } />
+                  <Route path="/blog/:slug" element={
+                    <AnimatedPage>
+                      <BlogPost />
                     </AnimatedPage>
                   } />
                 </Routes>
