@@ -10,7 +10,7 @@ const __dirname = path.dirname(__filename);
 
 // Configuration
 const SITE_URL = 'https://rturk.me';
-const WP_API_URL = 'http://cms.rturk.me/wp-json/wp/v2'; // Using HTTP instead of HTTPS
+const WP_API_URL = 'https://cms.rturk.me/wp-json/wp/v2';
 
 // Static routes - always included
 const staticRoutes = [
