@@ -1,7 +1,10 @@
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
 
-// Enhanced SEO component with more comprehensive meta tags
+/**
+ * Enhanced SEO component with dynamic meta descriptions
+ * This component handles all meta tags, schema markup, and other SEO elements
+ */
 const SEO = ({
   title,
   description,
@@ -13,13 +16,48 @@ const SEO = ({
   articleModifiedTime,
   articleTags,
   noIndex = false,
-  language = "en"
+  language = "en",
+  pageType = "default" // New parameter to identify page type
 }) => {
   // Combine title with site name
   const fullTitle = title ? `${title} | Raymond Turk` : "Raymond Turk | Full-Stack Web Developer";
 
-  // Default description if none provided
-  const metaDescription = description || "Full-Stack Web Developer specializing in WordPress, custom themes, and plugin development. Based in Cleveland, Ohio.";
+  // Generate dynamic descriptions based on page type if none provided
+  let metaDescription = description;
+  if (!metaDescription) {
+    switch (pageType) {
+      case "home":
+        metaDescription = "Cleveland-based Full-Stack Web Developer specializing in WordPress, Shopify and custom web solutions that drive business growth. Let's create your next digital success story.";
+        break;
+      case "about":
+        metaDescription = "With 5+ years of development experience, I craft custom WordPress and Shopify solutions that help businesses thrive online. Learn about my skills and approach to web development.";
+        break;
+      case "skills":
+        metaDescription = "Expert in WordPress, Shopify, React, PHP, and modern web technologies. Discover the technical skills I bring to every web development project for optimal performance and user experience.";
+        break;
+      case "experience":
+        metaDescription = "Explore my professional journey as a Full-Stack Developer. From local Cleveland businesses to global clients, I've delivered custom web solutions that solve real business problems.";
+        break;
+      case "services":
+        metaDescription = "Custom WordPress development, Shopify store creation, website maintenance and optimization services tailored to your business needs. Quality code, excellent support.";
+        break;
+      case "projects":
+        metaDescription = "Browse my portfolio of custom WordPress websites, Shopify stores, and web applications. Each project showcases my commitment to clean code and effective design.";
+        break;
+      case "contact":
+        metaDescription = "Ready to discuss your project? Get in touch for WordPress development, Shopify customization, or website maintenance services. Based in Cleveland, serving clients globally.";
+        break;
+      case "blog":
+        metaDescription = "Web development insights, WordPress tips, and Shopify best practices from a full-stack developer. Practical advice to help your business succeed online.";
+        break;
+      case "blogPost":
+        // For blog posts, we'll handle this separately with content excerpts
+        metaDescription = "Read this insightful article about web development and digital strategies that can help your business grow online. Written by Raymond Turk, Cleveland WordPress developer.";
+        break;
+      default:
+        metaDescription = "Full-Stack Web Developer specializing in WordPress, custom themes, and plugin development. Based in Cleveland, Ohio.";
+    }
+  }
 
   // Combine default keywords with page-specific ones
   const defaultKeywords = ["Web Developer", "Full-Stack Developer", "Cleveland", "Ohio", "WordPress", "Shopify", "React Developer"];

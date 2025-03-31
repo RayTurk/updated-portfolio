@@ -75,10 +75,10 @@ const ProjectShowcase = () => {
     <>
       <SEO
         title="Web Development Portfolio | Raymond Turk"
-        description="Explore my web development projects including custom WordPress sites, Shopify stores, and business solutions. See how I've helped clients achieve their digital goals."
-        keywords={['WordPress Projects', 'Web Development Portfolio', 'Custom Website Examples', 'Shopify Stores', 'Cleveland Developer']}
+        keywords={['WordPress Projects', 'Web Development Portfolio', 'Custom Website Examples']}
         canonical="https://rturk.me/projects"
         schema={schemas}
+        pageType="projects"
       />
       <div
         className="pt-40 min-h-screen bg-gradient-to-b from-[#020617] via-[#0a0f1f] to-[#000D1A]/90

@@ -37,6 +37,9 @@ import { BsFileEarmarkCode, BsGrid1X2 } from "react-icons/bs";
 import { MdAnimation } from "react-icons/md";
 import { FcWorkflow } from "react-icons/fc";
 import useDocumentTitle from '../hooks/useDocumentTitle';
+import SEO from './SEO';
+import { generateBreadcrumbSchema, generateProjectSchema } from '../utils/schema';
+
 
 
 const SkillCard = ({ icon: Icon, title, skills, color }) => (
@@ -209,27 +212,35 @@ const SkillsSection = () => {
   ];
 
   return (
-    <main
-      className="pt-15 lg:pt-0 bg-gradient-to-b from-[#020617] via-[#0a0f1f] to-[#000D1A]/90
+    <>
+      <SEO
+        title="Development Skills | Raymond Turk"
+        keywords={['WordPress Skills', 'Web Development Tools', 'Technical Expertise']}
+        canonical="https://rturk.me/skills"
+        schema={breadcrumbSchema}
+        pageType="skills"
+      />
+      <main
+        className="pt-15 lg:pt-0 bg-gradient-to-b from-[#020617] via-[#0a0f1f] to-[#000D1A]/90
  text-white min-h-screen"
-    >
-      <section className="container mx-auto px-4 py-11">
-        <div className="flex justify-center items-center ">
-          <IconCloudDemo />
-        </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {skillCategories.map((category, index) => (
-            <SkillCard
-              key={index}
-              icon={category.icon}
-              title={category.title}
-              skills={category.skills}
-              color={category.color}
-            />
-          ))}
-        </div>
-      </section>
-      <style jsx>{`
+      >
+        <section className="container mx-auto px-4 py-11">
+          <div className="flex justify-center items-center ">
+            <IconCloudDemo />
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {skillCategories.map((category, index) => (
+              <SkillCard
+                key={index}
+                icon={category.icon}
+                title={category.title}
+                skills={category.skills}
+                color={category.color}
+              />
+            ))}
+          </div>
+        </section>
+        <style jsx>{`
         @keyframes shimmer {
           0% {
             transform: translateX(-100%);
@@ -242,7 +253,8 @@ const SkillsSection = () => {
           animation: shimmer 2s infinite;
         }
       `}</style>
-    </main>
+      </main>
+    </>
   );
 };
 

@@ -213,10 +213,10 @@ const Services = () => {
     <>
       <SEO
         title="Full-Stack Development Services | Raymond Turk"
-        description="Expert WordPress theme development, Shopify customization, and web maintenance services. Delivering high-performance websites that drive business growth in Cleveland and beyond."
-        keywords={['WordPress Development', 'Shopify Customization', 'Website Maintenance', 'Custom Themes', 'E-commerce Solutions', 'Cleveland Web Developer']}
+        keywords={['WordPress Development', 'Shopify Customization', 'Website Maintenance']}
         canonical="https://rturk.me/services"
         schema={breadcrumbSchema}
+        pageType="services"
       />
       <main className="pt-32 pb-20 bg-gradient-to-b from-[#020617] via-[#0a0f1f] to-[#000D1A]/90 text-white min-h-screen relative overflow-hidden">
         {/* Background Effects */}

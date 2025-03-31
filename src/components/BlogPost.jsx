@@ -168,10 +168,52 @@ const BlogPost = () => {
       return doc.body.textContent || "";
     };
 
-    const description = stripHTML(post.excerpt.rendered).slice(0, 160);
+    // Create a unique description from the post content
+    let description = "";
+
+    // Try to use excerpt first
+    if (post.excerpt && post.excerpt.rendered) {
+      description = stripHTML(post.excerpt.rendered);
+    } else if (post.content && post.content.rendered) {
+      // Fall back to content if excerpt is not available
+      const contentText = stripHTML(post.content.rendered);
+
+      // Try to get a meaningful first paragraph
+      const paragraphs = contentText.split(/\n\s*\n/);
+      const firstParagraph = paragraphs.find(p => p.trim().length > 80) || paragraphs[0] || "";
+
+      description = firstParagraph.trim();
+    }
+
+    // Add title if description is too short
+    if (!description || description.length < 80) {
+      const postTitle = stripHTML(post.title.rendered);
+      const contentSummary = stripHTML(post.content.rendered).substring(0, 120);
+      description = `${postTitle}: ${contentSummary}`;
+    }
+
+    // Include category information to make it more unique
     const categories = post._embedded?.['wp:term']?.[0] || [];
+    if (categories.length > 0) {
+      const categoryNames = categories.map(cat => cat.name).join(", ");
+      if (description.length < 120 && !description.includes(categoryNames)) {
+        description = `${description.substring(0, 100)} [${categoryNames}]`;
+      }
+    }
+
+    // Ensure the right length for meta description (between 140-160 characters)
+    if (description.length > 160) {
+      description = description.substring(0, 157) + "...";
+    } else if (description.length < 140) {
+      // If too short, add a call to action
+      description = `${description} Learn more about WordPress development and web solutions by Ray Turk.`.substring(0, 160);
+    }
+
+    // Extract keywords from categories and tags
     const tags = post._embedded?.['wp:term']?.[1] || [];
     const allKeywords = [...categories, ...tags].map(term => term.name);
+
+    // Get featured image if available
     const featuredImage = post._embedded?.['wp:featuredmedia']?.[0]?.source_url || null;
 
     // Generate breadcrumb schema
@@ -190,7 +232,8 @@ const BlogPost = () => {
       schema: breadcrumbSchema,
       articlePublishedTime: post.date,
       articleModifiedTime: post.modified,
-      articleTags: allKeywords
+      articleTags: allKeywords,
+      pageType: "blogPost" // Specify page type
     };
   };
 

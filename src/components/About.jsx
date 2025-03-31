@@ -168,10 +168,10 @@ const About = () => {
     <>
       <SEO
         title="About Raymond Turk | Cleveland Web Developer"
-        description="5+ years of experience creating custom WordPress and Shopify solutions. Learn about my approach to web development and how I can help your business succeed online."
-        keywords={['WordPress Expert', 'Cleveland Developer', 'Full-Stack Developer', 'Shopify Specialist', 'Web Developer Biography']}
+        keywords={['WordPress Expert', 'Cleveland Developer', 'Full-Stack Developer']}
         canonical="https://rturk.me/about"
         schema={aboutSchema}
+        pageType="about"
       />
       <main className="min-h-screen pt-32 pb-20 text-white relative overflow-hidden text-sharp">
         {/* Hero Section */}

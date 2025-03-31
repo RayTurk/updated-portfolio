@@ -165,10 +165,10 @@ export default function Contact() {
     <>
       <SEO
         title="Contact Me"
-        description="Get in touch with Raymond Turk, Full-Stack Web Developer based in Cleveland, Ohio. Let's discuss your web development needs."
-        keywords={['Contact', 'Web Developer', 'Cleveland', 'Hire Developer', 'Custom WordPress']}
+        keywords={['Contact', 'Web Developer', 'Cleveland', 'Hire Developer']}
         canonical="https://rturk.me/contact"
         schema={breadcrumbSchema}
+        pageType="contact"
       />
       <main
         className="pt-20 lg:pt-[0rem] bg-gradient-to-b from-[#020617] via-[#0a0f1f] to-[#000D1A]/90 text-white min-h-screen"

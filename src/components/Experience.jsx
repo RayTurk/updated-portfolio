@@ -1,6 +1,8 @@
 import React from "react";
 import { Code2, Activity, Cpu, Layers, Network, Binary } from "lucide-react";
 import useDocumentTitle from '../hooks/useDocumentTitle';
+import SEO from './SEO';
+import { generateBreadcrumbSchema, generateProjectSchema } from '../utils/schema';
 
 
 const ExperienceCard = ({
@@ -84,8 +86,20 @@ const ExperienceSection = () => {
     },
   ];
 
+  const breadcrumbSchema = generateBreadcrumbSchema([
+    { name: 'Home', url: 'https://rturk.me/' },
+    { name: 'Experience', url: 'https://rturk.me/experience' }
+  ]);
+
   return (
     <>
+      <SEO
+        title="Professional Experience | Raymond Turk"
+        keywords={['Web Developer Experience', 'Cleveland Developer', 'Professional Portfolio']}
+        canonical="https://rturk.me/experience"
+        schema={breadcrumbSchema}
+        pageType="experience"
+      />
       <div className="min-h-screen bg-gradient-to-b  relative overflow-hidden pt-32 pb-20">
         {/* Animated gradient background */}
         <div

@@ -110,6 +110,35 @@ const Blog = () => {
     { name: 'Blog', url: 'https://rturk.me/blog' }
   ]);
 
+  /**
+ * Generates dynamic meta descriptions for the blog list page
+ * based on active filters (categories/tags) or search queries
+ */
+  const getDynamicMetaDescription = () => {
+    let baseDescription = "Web development insights, WordPress tips, and digital strategy articles from Raymond Turk. ";
+
+    // If filtering by category
+    if (activeCategory) {
+      const categoryName = categories.find(c => c.id === activeCategory)?.name || '';
+      if (categoryName) {
+        return `${baseDescription} Browse articles about ${categoryName} for practical advice on improving your website and online presence.`;
+      }
+    }
+
+    // If using search
+    if (searchQuery) {
+      return `${baseDescription} Search results for "${searchQuery}" - Find expert web development resources and solutions for your digital challenges.`;
+    }
+
+    // For different pages of results
+    if (currentPage > 1) {
+      return `${baseDescription} Page ${currentPage} of our web development blog featuring WordPress, Shopify, and custom coding insights to boost your online business.`;
+    }
+
+    // Default description
+    return `${baseDescription} Practical web development advice, coding tutorials, and business insights to help your website succeed. Updated regularly with fresh content.`;
+  };
+
   // Fetch posts and categories
   useEffect(() => {
     const fetchData = async () => {
@@ -180,10 +209,11 @@ const Blog = () => {
     <>
       <SEO
         title="Blog | Web Development Insights"
-        description="Read the latest articles about WordPress development, Shopify customization, web optimization, and more from Raymond Turk's professional experiences."
-        keywords={['WordPress Blog', 'Web Development Articles', 'Shopify Tips', 'Cleveland Developer Blog', 'Raymond Turk Web Development']}
-        canonical="https://rturk.me/blog"
+        description={getDynamicMetaDescription()}
+        keywords={['WordPress Blog', 'Web Development Articles', 'Shopify Tips']}
+        canonical={`https://rturk.me/blog${currentPage > 1 ? `?page=${currentPage}` : ''}${activeCategory ? `&category=${activeCategory}` : ''}`}
         schema={breadcrumbSchema}
+        pageType="blog"
       />
 
       <main className="min-h-screen pt-32 pb-20 bg-gradient-to-b from-[#020617] via-[#0a0f1f] to-[#000D1A]/90 text-white relative">
@@ -258,8 +288,8 @@ const Blog = () => {
                           key={category.id}
                           onClick={() => handleCategoryChange(category.id)}
                           className={`text-left px-3 py-2 rounded-md flex justify-between items-center transition-colors ${activeCategory === category.id
-                              ? "bg-blue-500/20 text-blue-300"
-                              : "text-gray-300 hover:bg-gray-800/70 hover:text-white"
+                            ? "bg-blue-500/20 text-blue-300"
+                            : "text-gray-300 hover:bg-gray-800/70 hover:text-white"
                             }`}
                         >
                           <span>{category.name}</span>

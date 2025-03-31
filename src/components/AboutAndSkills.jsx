@@ -275,14 +275,20 @@ const AboutAndSkills = () => {
     }
   ];
 
+  // Combine person and breadcrumb schema
+  const aboutSchema = [
+    generatePersonSchema(),
+    breadcrumbSchema
+  ];
+
   return (
     <>
       <SEO
-        title="About Raymond Turk | Full-Stack Developer"
-        description="Full-Stack Web Developer with 5+ years of experience specializing in WordPress, Shopify, and custom web development. Learn about my skills, approach, and who I work with."
-        keywords={['WordPress Expert', 'Full-Stack Developer', 'Cleveland Web Developer', 'Shopify Developer', 'Web Development Skills']}
+        title="About Raymond Turk | Cleveland Web Developer"
+        keywords={['WordPress Expert', 'Cleveland Developer', 'Full-Stack Developer']}
         canonical="https://rturk.me/about"
-        schema={pageSchema}
+        schema={aboutSchema}
+        pageType="about"
       />
       <main className="min-h-screen pt-32 pb-20 text-white relative overflow-hidden text-sharp">
         {/* Background Effects */}
