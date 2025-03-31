@@ -61,13 +61,13 @@ export default function Hero() {
   const words = [
     "Full-Stack Developer",
     "UI/UX Enthusiast",
-    "Full-Stack",
+    "WordPress",
   ];
 
   const [code] = useState(`
 const profile = {
     name: 'Raymond Turk',
-    title: 'Full-Stack Developer | Full-Stack | Problem Solver',
+    title: 'Full-Stack Developer | WordPress | Problem Solver',
     skills: [
         'WordPress', 'Shopify', 'PHP', 'React',
         'MySQL', 'JavaScript', 'TypeScript',
