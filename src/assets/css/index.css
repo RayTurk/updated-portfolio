@@ -211,3 +211,8 @@ pre[class*="language-"] {
     scroll-behavior: auto !important;
   }
 }
+
+#project-scope-container p , #project-solutions-container p {
+  margin-bottom: 1.2em;
+
+}

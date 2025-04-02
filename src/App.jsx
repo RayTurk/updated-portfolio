@@ -1,4 +1,4 @@
-// src/App.jsx (updated with blog routes)
+// src/App.jsx (updated with projects and blog routes)
 import React, { useState, useEffect } from "react";
 import Hero from "./components/Hero";
 import "./assets/css/index.css";
@@ -8,6 +8,7 @@ import Footer from "./components/Footer";
 import Experience from "./components/Experience";
 import Contact from "./components/Contact";
 import Projects from "./components/Projects";
+import SingleProject from "./components/SingleProject"; // Import SingleProject component
 import AboutAndSkills from "./components/AboutAndSkills";
 import Services from "./components/Services";
 import Blog from "./components/Blog"; // Import Blog component
@@ -121,6 +122,12 @@ export default function App() {
                   <Route path="/projects" element={
                     <AnimatedPage>
                       <Projects />
+                    </AnimatedPage>
+                  } />
+                  {/* New route for single project page */}
+                  <Route path="/projects/:slug" element={
+                    <AnimatedPage>
+                      <SingleProject />
                     </AnimatedPage>
                   } />
                   <Route path="/services" element={

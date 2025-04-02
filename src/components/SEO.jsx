@@ -2,7 +2,7 @@ import React from 'react';
 import { Helmet } from 'react-helmet-async';
 
 /**
- * Enhanced SEO component with dynamic meta descriptions
+ * Enhanced SEO component with dynamic meta descriptions and unique page titles
  * This component handles all meta tags, schema markup, and other SEO elements
  */
 const SEO = ({
@@ -17,10 +17,48 @@ const SEO = ({
   articleTags,
   noIndex = false,
   language = "en",
-  pageType = "default" // New parameter to identify page type
+  pageType = "default" // Used to identify page type
 }) => {
-  // Combine title with site name
-  const fullTitle = title ? `${title} | Raymond Turk` : "Raymond Turk | Full-Stack Web Developer";
+  // Create unique page titles based on page type
+  let fullTitle;
+
+  // Generate a more unique title structure based on page type
+  switch (pageType) {
+    case "home":
+      fullTitle = "Raymond Turk | Full-Stack Web Developer in Cleveland, Ohio";
+      break;
+    case "about":
+      fullTitle = "About Ray Turk | Web Development Experience & Skills";
+      break;
+    case "skills":
+      fullTitle = "Technical Skills | Raymond Turk - Web Developer";
+      break;
+    case "experience":
+      fullTitle = "Professional Experience | Raymond Turk - Web Developer";
+      break;
+    case "services":
+      fullTitle = "Web Development Services | WordPress & Shopify Expert";
+      break;
+    case "projects":
+      fullTitle = title || "Web Development Portfolio | Raymond Turk";
+      break;
+    case "project":
+      fullTitle = title || "Case Study | Raymond Turk - Web Developer";
+      break;
+    case "contact":
+      fullTitle = "Contact Raymond Turk | Cleveland Web Developer";
+      break;
+    case "blog":
+      fullTitle = title || "Web Development Blog | WordPress & Shopify Tips";
+      break;
+    case "blogPost":
+      // For blog posts, use the provided title with a consistent structure
+      fullTitle = title ? `${title} | Raymond Turk's Blog` : "Web Development Article | Raymond Turk";
+      break;
+    default:
+      // Fallback with differentiation
+      fullTitle = title ? `${title} | Raymond Turk` : "Raymond Turk | Full-Stack Web Developer";
+  }
 
   // Generate dynamic descriptions based on page type if none provided
   let metaDescription = description;
@@ -43,6 +81,9 @@ const SEO = ({
         break;
       case "projects":
         metaDescription = "Browse my portfolio of custom WordPress websites, Shopify stores, and web applications. Each project showcases my commitment to clean code and effective design.";
+        break;
+      case "project":
+        metaDescription = "Detailed case study showing the development process, challenges, and solutions for this web project. See how I approach complex development tasks.";
         break;
       case "contact":
         metaDescription = "Ready to discuss your project? Get in touch for WordPress development, Shopify customization, or website maintenance services. Based in Cleveland, serving clients globally.";
@@ -88,7 +129,7 @@ const SEO = ({
       <meta property="og:title" content={fullTitle} />
       <meta property="og:description" content={metaDescription} />
       <meta property="og:url" content={canonical || "https://rturk.me/"} />
-      <meta property="og:site_name" content="Raymond Turk | Full-Stack Web Developer" />
+      <meta property="og:site_name" content="Raymond Turk | Web Developer" />
       <meta property="og:image" content={ogImage} />
       <meta property="og:image:width" content="1200" />
       <meta property="og:image:height" content="630" />
