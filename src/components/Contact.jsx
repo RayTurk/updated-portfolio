@@ -4,8 +4,6 @@ import useDocumentTitle from '../hooks/useDocumentTitle';
 import SparklesText from "./ui/sparkles-text.jsx";
 import SEO from './SEO';
 import { generateBreadcrumbSchema } from '../utils/schema';
-import { WEB3FORMS_API_KEY } from '../config';
-
 
 // AnimatedGrid Component
 const AnimatedGrid = () => {
@@ -106,29 +104,22 @@ export default function Contact() {
     setStatus("Sending message...");
 
     try {
-      // Prepare form data for Web3Forms
-      const formSubmission = {
-        access_key: WEB3FORMS_API_KEY, // Access key from config
-        name: formData.name,
-        email: formData.email,
-        subject: formData.subject,
-        message: formData.message,
-        from_page: window.location.pathname
-      };
+      // Create FormData object from the form fields
+      const formSubmission = new FormData();
+      formSubmission.append("form-name", "contact"); // Important! The name attribute for Netlify form identification
+      formSubmission.append("name", formData.name);
+      formSubmission.append("email", formData.email);
+      formSubmission.append("subject", formData.subject);
+      formSubmission.append("message", formData.message);
 
-      // Submit to Web3Forms
-      const response = await fetch('https://api.web3forms.com/submit', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Accept': 'application/json'
-        },
-        body: JSON.stringify(formSubmission)
+      // Submit the form to Netlify
+      const response = await fetch("/", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: new URLSearchParams(formSubmission).toString()
       });
 
-      const result = await response.json();
-
-      if (result.success) {
+      if (response.ok) {
         // Push form submission event to dataLayer for GTM
         window.dataLayer = window.dataLayer || [];
         window.dataLayer.push({
@@ -153,7 +144,7 @@ export default function Contact() {
         setErrors({});
       } else {
         setStatus("Sorry, something went wrong. Please try again later.");
-        console.error("Form submission error:", result);
+        console.error("Form submission error:", response.statusText);
       }
     } catch (error) {
       setStatus("Sorry, something went wrong. Please try again later.");
@@ -216,9 +207,19 @@ export default function Contact() {
               <div className="backdrop-blur-lg bg-white/5 p-8 rounded-2xl shadow-xl">
                 {/* This hidden input is needed for Netlify form detection */}
                 <form
+                  name="contact"
+                  method="POST"
+                  data-netlify="true"
+                  netlify-honeypot="bot-field"
                   className="space-y-6"
                   onSubmit={handleSubmit}
                 >
+                  {/* These hidden inputs are required for Netlify forms */}
+                  <input type="hidden" name="form-name" value="contact" />
+                  <div hidden>
+                    <input name="bot-field" />
+                  </div>
+
                   <div className="grid grid-cols-1 gap-6">
                     <div>
                       <input
