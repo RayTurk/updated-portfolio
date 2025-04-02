@@ -123,14 +123,19 @@ export default function Contact() {
         // Push form submission event to dataLayer for GTM
         window.dataLayer = window.dataLayer || [];
         window.dataLayer.push({
-          'event': 'contact_form_submission',
-          'formType': 'contact',
-          'formData': {
-            'name': formData.name,
-            'email': formData.email,
-            'subject': formData.subject
-          }
+          'event': 'form_submission',
+          'form_name': 'contact',
+          'form_id': 'contact-form',
+          'form_subject': formData.subject,
+          'form_location': window.location.pathname,
+          'user_email': formData.email ? 'email_provided' : 'no_email',
+          'submission_timestamp': new Date().toISOString()
         });
+
+        // Log the event to console in development
+        if (process.env.NODE_ENV === 'development') {
+          console.log('GTM Event Pushed:', 'form_submission');
+        }
 
         setStatus("Message sent successfully!");
 
@@ -208,11 +213,13 @@ export default function Contact() {
                 {/* This hidden input is needed for Netlify form detection */}
                 <form
                   name="contact"
+                  id="contact-form"
                   method="POST"
                   data-netlify="true"
                   netlify-honeypot="bot-field"
                   className="space-y-6"
                   onSubmit={handleSubmit}
+                  data-gtm-form="contact"
                 >
                   {/* These hidden inputs are required for Netlify forms */}
                   <input type="hidden" name="form-name" value="contact" />
