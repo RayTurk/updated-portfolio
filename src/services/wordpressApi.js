@@ -1,7 +1,7 @@
 // src/services/wordpressApi.js
 
 /**
- * WordPress REST API service for fetching blog content
+ * WordPress REST API service for fetching blog content and projects
  */
 
 // You'll replace this with your WordPress site URL
@@ -132,5 +132,84 @@ export const getTags = async ({ perPage = 100 } = {}) => {
   } catch (error) {
     console.error('Error fetching tags:', error);
     throw error;
+  }
+};
+
+/**
+ * Fetch projects from WordPress API
+ * @param {Object} options - Query parameters
+ * @returns {Promise<{projects: Array, totalPages: Number}>}
+ */
+export const getProjects = async (options = {}) => {
+  try {
+    // Default parameters
+    const {
+      page = 1,
+      perPage = 9,
+      featured = null,
+      search = null,
+      exclude = null
+    } = options;
+
+    // Build query parameters
+    let url = `${API_URL}/project?_embed=true&page=${page}&per_page=${perPage}`;
+
+    // Add featured filter if specified
+    if (featured !== null) {
+      url += `&acf_filter[featured_status]=${featured ? 'true' : 'false'}`;
+    }
+
+    // Add search term if specified
+    if (search) {
+      url += `&search=${encodeURIComponent(search)}`;
+    }
+
+    // Add exclusion if specified
+    if (exclude) {
+      url += `&exclude=${exclude}`;
+    }
+
+    // Add sorting (newest first by default)
+    url += '&order=desc&orderby=date';
+
+    const response = await fetch(url);
+
+    if (!response.ok) {
+      throw new Error(`Error fetching projects: ${response.status}`);
+    }
+
+    // Get total pages from headers
+    const totalPages = parseInt(response.headers.get('X-WP-TotalPages') || '1', 10);
+
+    // Get the projects from the response
+    const projects = await response.json();
+
+    return { projects, totalPages };
+  } catch (error) {
+    console.error('Failed to fetch projects:', error);
+    return { projects: [], totalPages: 0 };
+  }
+};
+
+/**
+ * Fetch a single project by slug
+ * @param {String} slug - Project slug
+ * @param {Boolean} embed - Whether to embed related data
+ * @returns {Promise<Object>} - Project data
+ */
+export const getProject = async (slug, embed = true) => {
+  try {
+    const url = `${API_URL}/project?slug=${slug}${embed ? '&_embed=true' : ''}`;
+    const response = await fetch(url);
+
+    if (!response.ok) {
+      throw new Error(`Error fetching project: ${response.status}`);
+    }
+
+    const projects = await response.json();
+    return projects.length > 0 ? projects[0] : null;
+  } catch (error) {
+    console.error(`Failed to fetch project with slug "${slug}":`, error);
+    return null;
   }
 };
