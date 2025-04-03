@@ -8,8 +8,26 @@
     "build": "vite build && npm run generate-sitemap",
     "preview": "vite preview",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
-    "generate-sitemap": "node scripts/generate-sitemap.js"
+    "generate-sitemap": "node scripts/generate-sitemap.js",
+    "postbuild": "react-snap"
   },
+  "reactSnap": {
+  "include": [
+    "/",
+    "/about",
+    "/skills",
+    "/experience",
+    "/services",
+    "/projects",
+    "/contact",
+    "/blog"
+  ],
+  "source": "dist",
+  "destination": "dist",
+  "puppeteerArgs": ["--no-sandbox", "--disable-setuid-sandbox"],
+  "skipThirdPartyRequests": false,
+  "waitFor": 2000
+},
   "dependencies": {
     "@fortawesome/fontawesome-free": "^6.7.2",
     "@radix-ui/react-slot": "^1.1.2",
@@ -29,6 +47,7 @@
     "react-icon-cloud": "^4.1.7",
     "react-icons": "^5.5.0",
     "react-router-dom": "^7.4.0",
+    "react-snap": "^1.23.0",
     "tailwind-merge": "^2.6.0",
     "tailwindcss-animate": "^1.0.7"
   },

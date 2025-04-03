@@ -217,9 +217,11 @@ pre[class*="language-"] {
 
 }
 
-ol, ul {
-  list-style: disc;
-  margin-block-end: 16px;
-  margin-block-start: 16px;
-  padding-inline-start: 40px;
+article {
+    ol, ul {
+    list-style: disc;
+    margin-block-end: 16px;
+    margin-block-start: 16px;
+    padding-inline-start: 40px;
+  }
 }
