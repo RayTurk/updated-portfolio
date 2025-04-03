@@ -62,7 +62,11 @@ export default function App() {
     <HelmetProvider>
       <div className="max-w-[100vw] overflow-x-hidden min-h-screen">
         {/* Global SEO component with website schema */}
-        <SEO schema={homeSchema} canonical="https://rturk.me" />
+        <SEO
+          schema={homeSchema}
+          canonical="https://rturk.me"
+          pageType="home"
+        />
 
         {/* Skip to content link - visible only when focused */}
         <a

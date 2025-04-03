@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { Github, ExternalLink, Filter, X } from "lucide-react";
+import { Filter, X } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -368,8 +368,6 @@ const ProjectShowcase = () => {
                 }
 
                 const featuredImage = project._embedded?.['wp:featuredmedia']?.[0]?.source_url || "";
-                const projectUrl = project.acf?.project_url || "";
-                const githubUrl = project.acf?.github_url || "";
                 const isFeatured = project.acf?.featured_status || false;
                 const projectCategories = project._embedded?.['wp:term']?.[0] || [];
                 const projectTechs = project._embedded?.['wp:term']?.[1] || [];
@@ -412,28 +410,6 @@ const ProjectShowcase = () => {
                                 dangerouslySetInnerHTML={{ __html: title }}
                               />
                             </CardTitle>
-                          </div>
-                          <div className="flex gap-4">
-                            {githubUrl && (
-                              <a
-                                href={githubUrl}
-                                className="text-slate-400 hover:text-emerald-400 transition-all duration-300 transform hover:scale-125"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                              >
-                                <Github size={22} />
-                              </a>
-                            )}
-                            {projectUrl && (
-                              <a
-                                href={projectUrl}
-                                className="text-slate-400 hover:text-emerald-400 transition-all duration-300 transform hover:scale-125"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                              >
-                                <ExternalLink size={22} />
-                              </a>
-                            )}
                           </div>
                         </div>
                       </CardHeader>
