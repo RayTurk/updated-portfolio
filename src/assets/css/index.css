@@ -216,3 +216,9 @@ pre[class*="language-"] {
   margin-bottom: 1.2em;
 
 }
+
+ol, ul {
+  list-style: disc;
+  margin: unset;
+  padding: unset;
+}
