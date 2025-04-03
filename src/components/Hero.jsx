@@ -94,11 +94,10 @@ const profile = {
   return (
     <>
       <SEO
-        title="Raymond Turk | WordPress & Shopify Developer in Cleveland"
-        description="Cleveland-based Full-Stack Web Developer specializing in custom WordPress solutions, Shopify stores, and responsive web applications. Let's build something amazing together."
         keywords={['WordPress Expert', 'Shopify Developer', 'Cleveland Web Developer', 'Custom Web Solutions', 'E-commerce Developer']}
         canonical="https://rturk.me/"
         schema={homeSchema}
+        pageType="home"
       />
       <main className="pt-20 lg:pt-[0rem] bg-gradient-to-b from-[#020617] via-[#0a0f1f] to-[#000D1A]/90 text-white min-h-screen">
         <section className="hero min-h-screen flex items-center relative px-4 sm:px-6 lg:px-8">
