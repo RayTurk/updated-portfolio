@@ -441,16 +441,6 @@ const SingleProject = () => {
                     />
                   </div>
                 )}
-
-                {/* My role section (if available) */}
-                {role && (
-                  <div className="rounded-lg bg-gray-800/50 border border-gray-700/50 p-6">
-                    <h2 className="text-xl font-bold mb-4 text-emerald-400">My Role</h2>
-                    <div className="text-gray-300">
-                      <p>{role}</p>
-                    </div>
-                  </div>
-                )}
               </div>
             </div>
 

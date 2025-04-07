@@ -212,16 +212,16 @@ pre[class*="language-"] {
   }
 }
 
-#project-scope-container p , #project-solutions-container p {
-  margin-bottom: 1.2em;
+#project-scope-container , #project-solutions-container {
+  p {
+    margin-bottom: 1.2em;
+  }
 
-}
-
-article {
-    ol, ul {
+  ol, ul {
     list-style: disc;
     margin-block-end: 16px;
     margin-block-start: 16px;
     padding-inline-start: 40px;
   }
+
 }
