@@ -1,4 +1,4 @@
-// src/App.jsx (updated with projects and blog routes)
+// src/App.jsx (updated with 404 fallback route)
 import React, { useState, useEffect } from "react";
 import Hero from "./components/Hero";
 import "./assets/css/index.css";
@@ -13,6 +13,7 @@ import AboutAndSkills from "./components/AboutAndSkills";
 import Services from "./components/Services";
 import Blog from "./components/Blog"; // Import Blog component
 import BlogPost from "./components/BlogPost"; // Import BlogPost component
+import NotFound from "./components/NotFound"; // Import NotFound component
 import { Route, Routes, useLocation } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
 import AnimatedPage from "./components/AnimatedPage";
@@ -153,6 +154,12 @@ export default function App() {
                   <Route path="/blog/:slug" element={
                     <AnimatedPage>
                       <BlogPost />
+                    </AnimatedPage>
+                  } />
+                  {/* 404 Fallback route - must be last */}
+                  <Route path="*" element={
+                    <AnimatedPage>
+                      <NotFound />
                     </AnimatedPage>
                   } />
                 </Routes>
