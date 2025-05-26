@@ -1,5 +1,5 @@
 import React from "react";
-import { Code2, Activity, Cpu, Layers, Network, Binary } from "lucide-react";
+import { Code2, Zap, Layers, Network } from "lucide-react";
 import useDocumentTitle from '../hooks/useDocumentTitle';
 import SEO from './SEO';
 import { generateBreadcrumbSchema, generateProjectSchema } from '../utils/schema';
@@ -61,12 +61,20 @@ const ExperienceSection = () => {
   // Reordered experiences - newest first
   const experiences = [
     {
+      icon: Zap,
+      title: "Full Stack Developer",
+      company: "Neon Goldfish",
+      period: "2025 - current",
+      description:
+        "Leading development of modern web applications and e-commerce solutions using React, WordPress, and Shopify. Creating interactive, custom-built experiences with advanced functionality and seamless user interfaces.",
+    },
+    {
       icon: Code2,
-      title: "Full Stack WordPress Developer",
+      title: "Full Stack Web Developer",
       company: "FSM",
       period: "2024 - 2025",
       description:
-        "Contributed to developing highly customized WordPress websites using custom functionality and plugins.",
+        "Developed multi-platform web solutions including WordPress sites, Shopify stores, and custom applications. Built advanced custom functionality, plugins, and modern interactive designs using React, PHP, and JavaScript.",
     },
     {
       icon: Layers,
@@ -74,7 +82,7 @@ const ExperienceSection = () => {
       company: "Company 119",
       period: "2021 - 2024",
       description:
-        "Worked on developing and customizing WordPress websites for clients locally and globally.",
+        "Developed and customized WordPress websites for diverse clientele across local and international markets. Specialized in theme development using ACF and Divi while building technical expertise in PHP and JavaScript.",
     },
     {
       icon: Network,
@@ -82,7 +90,7 @@ const ExperienceSection = () => {
       company: "Freelance",
       period: "2019 - 2020",
       description:
-        "Built basic, static sites for smaller businesses local to my area, usually donated.",
+        "Built responsive static websites for local small businesses, focusing on clean HTML/CSS implementation and user-friendly designs. Provided pro-bono development services to support community growth.",
     },
   ];
 
